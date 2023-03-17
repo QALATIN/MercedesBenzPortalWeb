@@ -1,0 +1,64 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MercedesBenzServerWeb
+build_property.RootNamespace = MercedesBenzServerWeb
+build_property.ProjectDir = D:\Proyectos\Net\MercedesBenzServerWeb\
+build_property.RazorLangVersion = 5.0
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Proyectos\Net\MercedesBenzServerWeb
+build_property._RazorSourceGeneratorDebug = 
+build_property._RazorSourceGeneratorHeapDumps = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/App.razor]
+build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Pages/Contador.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFkb3IucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Pages/FetchData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Pages/Usuarios.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXN1YXJpb3MucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-fckgszddxi
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-ub4z3nxei1
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[d:/Proyectos/Net/MercedesBenzServerWeb/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope =
