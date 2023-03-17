@@ -1,0 +1,1228 @@
+﻿
+#menu-login ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#menu-login ul a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 0px;
+}
+#menu-login ul li {
+    margin: 0;
+    padding: 4px 0px;
+    position: relative;
+}
+#menu-login ul ul {
+    display: none;
+    width: 350px;
+    top: 100%;
+    left: 30px;
+    padding: 10px 20px 20px 20px;
+    border: 1px solid #DBD8D8;
+    box-shadow: 0px 3px 6px #00000029;
+    background-color: #fff;
+    color: #000;
+    /*height: 460px;*/
+    /*overflow-y:scroll;*/
+    position: absolute;
+    z-index: 1;
+}
+#menu-login ul li ul a {
+    font-family: MBCorpoSTextOffice;
+    font-size: 16px;
+    color: #707070;
+}
+#menu-login ul ul li {
+    width: 100%;
+}
+#menu-login ul ul a {
+    line-height: 120%;
+}
+#menu-login ul li:hover > ul {
+    display: block;
+}
+
+/*
+    Mercedes Benz - Fuentes
+*/
+
+@font-face {
+    font-family: MBCorpoATitleCondOffice;
+    src: url('../css/font/mb/MBCorpoATitleCondOffice/MBCorpoATitleCondOffice-Regular.ttf')
+}
+
+@font-face {
+    font-family: MBCorpoSTextOffice;
+    src: url('../css/font/mb/MBCorpoSTextOffice/MBCorpoSTextOffice-Regular.ttf')
+}
+@font-face {
+    font-family: MBCorpoSTextOffice-Bold;
+    src: url('../css/font/mb/MBCorpoSTextOffice/MBCorpoSTextOffice-Bold.ttf')
+} 
+
+@font-face {
+    font-family: MBCorpoSTextOffice-Light;
+    src: url('../css/font/mb/MBCorpoSTextOffice/MBCorpoSTextOffice-Light.ttf')
+}
+@font-face {
+    font-family: Roboto;
+    src: url('../css/font/Roboto-Regular.ttf')
+}
+
+
+.mbz-font-ATitleCondOffice-30 {
+    font-family: MBCorpoATitleCondOffice;
+    font-size: 30px;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.mbz-font-ATitleCondOffice-40 {
+    font-family: MBCorpoATitleCondOffice;
+    font-size: 40px;
+    letter-spacing: 0px;
+    color: #464846;
+}
+
+.mbz-font-ATitleCondOffice-48 {
+    font-family: MBCorpoATitleCondOffice;
+    font-size: 48px;
+    letter-spacing: 0px;
+    color: #464846;
+}
+
+.mbz-font-STextOffice-10 {
+    font-family: MBCorpoSTextOffice;
+    font-size: 10px;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-12 {
+    font-family: MBCorpoSTextOffice;
+    font-size: 12px;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-14 {
+    font-family: MBCorpoSTextOffice;
+    font-size: 14px;
+    letter-spacing: 0px;
+}
+
+.mbz-font-STextOffice-16 {
+    font-family: MBCorpoSTextOffice;
+    font-size: 16px;
+    letter-spacing: 0px;
+}
+
+.mbz-font-STextOffice-18 {
+    font-family: MBCorpoSTextOffice;
+    font-size: 18px;
+    letter-spacing: 0.17px;
+}
+
+.mbz-font-STextOffice-25 {
+    font-family: MBCorpoSTextOffice;
+    font-size: 25px;
+    letter-spacing: 0px;
+}
+
+.mbz-font-STextOffice-B-10 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-B-12 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-B-14 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.mbz-font-STextOffice-B-16 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.mbz-font-STextOffice-B-18 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.mbz-font-STextOffice-B-20 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-B-22 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-B-24 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-B-28 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-font-STextOffice-B-30 {
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-font-Roboto-18 {
+    font-family: Roboto;
+    font-size: 18px;
+    letter-spacing: 0.17px;
+}
+
+.mbz-text-primary {
+    color: #00ADEF;
+}
+.mbz-text-secondary {
+    color: #707070;
+}
+.mbz-text-dark {
+    color: #232F3B;
+}
+.mbz-text-info {
+    color: #356DB1;
+}
+.mbz-text-white {
+    color: #ffffff;
+}
+.mbz-text-green {
+    color: #168A00;
+}
+.mbz-text-yellow {
+    color: #FEBF00;
+}
+.mbz-text-red {
+    color: #9F0002;
+}
+.mbz-text-gray {
+    color: #707070;
+}
+.mbz-text-ok {
+    color: #07AA00;
+}
+.mbz-span-sem-verde {
+    display: inline-block;
+    background: #168A00;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.mbz-span-sem-amarillo {
+    display: inline-block;
+    background: #FEBF00;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.mbz-span-sem-rojo {
+    display: inline-block;
+    background: #9F0002;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.mbz-span-sem-rojo2 {
+    display: inline-block;
+    background: #8B0000;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.mbz-span-sem-gris {
+    display: inline-block;
+    background: #707070;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+.mbz-span-sem-primary {
+    display: inline-block;
+    background: #00ADEF;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
+.mbz-span-sem-25 {
+    width: 25px;
+    height: 25px;
+}
+
+.mbz-span-sem-36 {
+    width: 36px;
+    height: 36px;
+}
+
+.mbz-span-sem-56 {
+    width: 56px;
+    height: 56px;
+}
+
+
+/*
+    Mercedes Benz - CSS - Tablas
+*/
+.mbz-tb {
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+.mbz-tb tr > th {
+    background-color: #393939;
+    color: #fff ;
+    text-align: center;
+    vertical-align: middle;
+    font-family: MBCorpoSTextOffice;
+    font-size: 16px;
+    padding: 8px;
+}
+
+.mbz-tb tr > td {
+    color: #000;
+    font-family: MBCorpoSTextOffice;
+    font-size: 16px;
+    padding: 8px;
+}
+.mbz-tb-14 {
+    border-collapse: collapse;
+    font-size: 14px;
+}
+.mbz-tb-14 tr > th {
+    background: #393939 0% 0% no-repeat padding-box;
+    color: #fff !important;
+    text-align: center;
+    vertical-align: middle;
+    font-family: MBCorpoSTextOffice;
+    font-size: 14px;
+    padding: 8px;
+}
+.mbz-tb-14 tr > td {
+    color: #000 !important;
+    font-family: MBCorpoSTextOffice;
+    font-size: 14px;
+    padding: 8px;
+}
+
+.mbz-tb-buscar {
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.mbz-tb-buscar tr > th {
+    color: #fff !important;
+    background: #393939 0% 0% no-repeat padding-box;
+    text-align: center;
+    vertical-align: middle;
+    font-family: MBCorpoSTextOffice;
+    font-size: 12px;
+    padding: 8px;
+}
+
+.mbz-tb-buscar tr > td {
+    color: #000 !important;
+    text-align: center;
+    vertical-align: middle;
+    font-family: MBCorpoSTextOffice;
+    font-size: 12px;
+    padding: 8px;
+}
+
+.mbz-tb-huellas {
+    border-collapse: collapse;
+    font-size: 20px;
+}
+.mbz-tb-huellas tr > th {
+    background: #393939 0% 0% no-repeat padding-box;
+    color: #000 !important;
+    text-align: center;
+    vertical-align: middle;
+    font-family: MBCorpoSTextOffice;
+    font-size: 20px;
+    padding: 8px;
+}
+.mbz-tb-huellas tr > td {
+    color: #000 !important;
+    text-align: center;
+    font-family: MBCorpoSTextOffice;
+    font-size: 20px;
+    padding: 8px;
+}
+
+/*
+    Mercedes Benz - CSS
+*/
+
+.mbz-sidebar {
+    width: 260px;
+    /*height: 100vh;*/
+    position: sticky;
+    top: 0;
+}
+
+.mbz-ctr-full {
+    display: flex;
+    justify-content: center;
+    font-family: MBCorpoSTextOffice;
+    font-size: 16px;
+    color: #707070;
+    width: 100%;
+    height: 100%;
+}
+.mbz-ctr {
+    width: 1366px;
+    /*height: 768px;*/
+    height:100%;
+}
+
+.mbz-ctr-content {
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid rgba(0,0,0,.125);
+    height: 100%;
+    /*z-index: -1;*/
+}
+
+.mbz-ctr-header {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    background: #000000 0% 0% no-repeat padding-box;
+    font-family: Helvetica;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    border-left: 1px solid rgba(0,0,0,.125);
+    position: relative;
+    /*z-index: -1;*/
+}
+.mbz-ctr-header-ico {
+    width: 20px;
+    float: right;
+    /*align-self: center;*/
+}
+.mbz-ctr-header-name {
+    width: 300px;
+    float: right;
+    padding-left: 10px;
+    padding-right: 0px;
+    /*align-self: center;*/
+}
+.mbz-ctr-header-image {
+    width: 48px;
+    float: right;
+    padding-left: 10px;
+    padding-right: 10px;
+    /*align-self: center;*/
+}
+.mbz-ctr-header-notify {
+    width: 48px;
+    float: right;
+    align-self: center;
+    padding-left: 10px;
+    padding-right: 20px;
+    /*background-image: url('../image/Notificaciones.png');*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+}
+
+.mbz-bg-login {
+    background: #EDEDED 0% 0% no-repeat padding-box;
+}
+
+.mbz-ctr-login-head {
+    width: 100%;
+    height: 56px;
+    background: #000000 0% 0% no-repeat padding-box;
+    background-image: url('../image/Star.png');
+    background-position: center;
+}
+
+.mbz-ctr-login {
+    width: 533px;
+    /*height: 482px;*/
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 6px 6px 12px #00000029;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 76px;
+}
+
+.mbz-ctr-login-title {
+    font-family: MBCorpoATitleCondOffice;
+    font-size: 34px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-top: 42px;
+    padding-bottom: 21px;
+}
+
+.mbz-ctr-login-body {
+    width: 328px;
+    padding-top: 21px;
+    padding-bottom: 42px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mbz-ctr-login-footer {
+    position: fixed;
+    bottom: 0px;
+    /*height: 30px;*/
+    padding: 10px 20px;
+}
+
+.mbz-ctr-recovery {
+    width: 533px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 6px 6px 12px #00000029;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 76px;
+}
+.mbz-ctr-recovery-mensaje {
+    font-family: MBCorpoSTextOffice;
+    font-size: 25px;
+    letter-spacing: 0px;
+    text-align: center;
+    padding-top: 21px;
+    padding-bottom: 21px;
+}
+
+/*
+    Mercedes Benz - CSS - Botones
+*/
+
+.mbz-btn-primary {
+    color: #fff;
+    background: #00ADEF 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    width: 100%;
+    height: 38px;
+}
+
+.mbz-btn-cancelar {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #00ADEF;
+    border-radius: 4px;
+    width: 100%;
+    height: 38px;
+}
+.mbz-btn-danger {
+    color: #fff;
+    background: #E5263C 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+    width: 100%;
+    height: 38px;
+}
+.mbz-btn-h-28 {
+    height: 28px;
+    border-radius: 2px;
+    padding: 3px 12px;
+}
+
+.mbz-picker-range-buscar {
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    width: 350px;
+    border: 2px solid #888B8D;
+    border-radius: 4px;
+}
+.mbz-input-picker-range {
+    font-family: MBCorpoSTextOffice;
+    font-size: 16px;
+    letter-spacing: 0px;
+    width: 84%;
+    line-height: 1.4;
+    border: 0px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.mbz-input-edi {
+    border: 2px solid #888B8D;
+    font-family: MBCorpoSTextOffice;
+    font-size: 16px;
+    letter-spacing: 0px;
+}
+.mbz-label-edi {
+    font-family: Roboto;
+    font-size: 10px;
+    letter-spacing: 0.33px;
+    color: #888B8D;
+    background-color: white;
+    padding: 0px 3px;
+    position: relative;
+    left: 10px;
+    top: 12px;
+}
+
+.mbz-bg-primary {
+    color: #00ADEF;
+}
+
+.mbz-bg-secondary {
+    color: #707070;
+}
+.mbz-bt-secondary {
+    border-top: 1px solid #707070;
+}
+
+.mbz-hr {
+    margin: 4px 0px;
+    border-bottom: 1px solid #707070;
+}
+.mbz-flx-ah-left {
+    justify-content: left;
+}
+
+.mbz-flx-ah-center {
+    justify-content: center;
+}
+
+.mbz-flx-ah-right {
+    justify-content: right;
+}
+.mbz-ali-ico {
+    text-align:center;
+}
+
+/*
+    Mercedes Benz - CSS - Flex
+*/
+
+.mbz-edi-w-1d3 {
+    float: left;
+    width: 350px;
+    margin: 10px;
+    align-self: end;
+}
+.mbz-edi-w-2d3 {
+    float: left;
+    width: 100%;
+    margin: 10px;
+}
+.mbz-edi-w-100p {
+    width: 100%;
+    margin: 10px;
+}
+.mbz-rep-w-1d3 {
+    float: left;
+    width: 282px;
+    margin: 20px 25px;
+    align-self: end;
+}
+.mbz-rep-w-2d3 {
+    float: left;
+    width: 100px;
+    margin: 50px 25px;
+    align-self: end;
+}
+
+.mbz-w-btn-pregunta {
+    float: left;
+    width: 210px;
+    margin: 10px;
+}
+.mbz-w-btn-pregunta > button {
+    height: 50px;
+}
+
+.mbz-w-btn-coment {
+    float: left;
+    width: 210px;
+    margin: 10px 0px;
+}
+
+.mbz-w-btn-coment > button {
+    height: 50px;
+}
+
+
+.mbz-opc-w-10p {
+    display: flex;
+    float: left;
+    width: 10%;
+}
+.mbz-opc-w-90p {
+    display:flex;
+    float:left;
+    width: 200px;
+}
+.mbz-w-5p {
+    width: 5%;
+    float: left;
+}
+.mbz-w-10p {
+    width: 10%;
+    float: left;
+}
+.mbz-w-15p {
+    width: 15%;
+    float: left;
+}
+.mbz-w-20p {
+    width: 20%;
+    float: left;
+}
+.mbz-w-25p {
+    width: 25%;
+    float: left;
+}
+.mbz-w-30p {
+    width: 30%;
+    float: left;
+}
+.mbz-w-35p {
+    width: 35%;
+    float: left;
+}
+.mbz-w-40p {
+    width: 40%;
+    float: left;
+}
+.mbz-w-45p {
+    width: 45%;
+    float: left;
+}
+.mbz-w-50p {
+    width: 50%;
+    float: left;
+}
+.mbz-w-55p {
+    width: 55%;
+    float: left;
+}
+.mbz-w-60p {
+    width: 60%;
+    float: left;
+}
+.mbz-w-65p {
+    width: 65%;
+    float: left;
+}
+
+.mbz-w-90p {
+    width: 90%;
+    float: left;
+}
+
+.mbz-w-100p {
+    width: 100%;
+}
+
+.mbz-h-sem {
+    height: 62px;
+}
+
+.mbz-row-center {
+    display: flex;
+    justify-content: center;
+}
+.mbz-content-center {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+}
+
+.mbz-card-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mbz-card-home {
+    width: 416px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mbz-card-home-opcion {
+    border: 1px solid #707070;
+    border-radius: 4px;
+    padding: 20px;
+    width: 336px;
+    height: 190px;
+    text-align: center;
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+.mbz-card-solicitud-tarjeta {
+    width: 555px;
+    height: 330px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mbz-card-solicitud-tarjeta-item {
+    border: 1px solid #707070;
+    border-radius: 10px;
+    padding: 20px;
+    width: 530px;
+    height: 300px;
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.mbz-card-reporte-opcion {
+    border: 1px solid #707070;
+    border-radius: 4px;
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    height: 150px;
+    text-align: center;
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0px;
+}
+
+.mbz-card-edicion {
+    padding: 20px 0px;
+}
+.mbz-card-buscar {
+    padding: 0px 0px 20px 0px;
+}
+.mbz-card-ficha {
+    margin: 0px 50px;
+}
+.mbz-card-ficha-carnet {
+    border: 1px solid #707070;
+    border-radius: 4px;
+    padding: 10px;
+}
+.mbz-card-ficha-sem {
+    border: 1px solid #707070;
+    border-radius: 4px;
+    margin: 0px 0px 20px 0px;
+    min-height: 66px;
+}
+.mbz-ficha-sem-row {
+    display: flex;
+    height: 66px;
+}
+.mbz-ficha-sem-1 {
+    width: 173px;
+    float: left;
+    align-self: center;
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 15px;
+}
+
+.mbz-ficha-sem-2 {
+    width: 603px;
+    float: left;
+    align-self: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.mbz-ficha-sem-21 {
+    width: 445px;
+    float: left;
+    align-self: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.mbz-ficha-sem-22 {
+    width: 453px;
+    float: left;
+    align-self: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.mbz-ficha-sem-23 {
+    width: 150px;
+    float: left;
+    align-self: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.mbz-ficha-sem-3 {
+    width: 173px;
+    float: left;
+    align-self: center;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 30px;
+}
+
+.mbz-ficha-sem-31 {
+    width: 158px;
+    float: left;
+    align-self: center;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.mbz-ficha-sem-32 {
+    width: 173px;
+    float: left;
+    align-self: center;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 30px;
+}
+
+.mbz-card-reporte-fechas {
+    padding: 0px 25px 20px 25px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.mbz-card-reporte-descargar {
+    padding: 0px 25px 20px 25px;
+}
+
+
+.mbz-card-titulo-1 {
+    margin: 40px 40px 20px 40px;
+}
+.mbz-card-titulo-2 {
+    margin: 20px;
+}
+
+
+/*
+    Mercedes Benz - CSS - Modal
+*/
+
+.mbz-modal-dialog2 {
+    width: 640px;
+    height: 330px;
+    margin-top: 190px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mbz-modal-dialog-comment2 {
+    width: 640px;
+    height: 470px;
+    margin-top: 145px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mbz-modal-content2 {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: .1rem;
+    outline: 0;
+}
+
+.mbz-modal-container {
+    position: fixed;
+    /*position: absolute;*/
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    display: flex;
+    background: #393939 0% 0% no-repeat padding-box;
+    opacity: 0.98;
+}
+.mbz-modal {
+    margin-top: 130px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 640px;
+    height: 330px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+}
+
+.mbz-modal-header {
+    display: flex;
+    justify-content: end;
+    height: 120px;
+    align-items: center;
+    padding: 40px;
+}
+
+.mbz-modal-title {
+}
+.mbz-modal-close {
+}
+.mbz-modal-content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 40px;
+}
+.mbz-modal-content-pregunta {
+    display: flex;
+    justify-content: center;
+    padding: 20px 40px;
+}
+.mbz-modal-content-coment {
+    padding: 20px 56px;
+}
+.mbz-modal-content-mail {
+    display: flex;
+    justify-content: center;
+    padding: 0px 50px;
+    width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mbz-modal-footer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 40px 40px 40px;
+}
+
+.mbz-nav-item {
+    padding: 2px,6px;
+    margin-left: 30px;
+}
+
+.mbz-nav-menu {
+    background-color: white;
+    border: none;
+    padding: 0px 0px 10px 0px;
+    margin-top: 40px;
+    margin-left: 26px;
+}
+
+.mbz-nav > a,
+.mbz-nav > span {
+    padding: 3px 0px;
+    margin-left: 30px;
+    display: inline-flex;
+    /*padding: 2px 6px;*/
+    /*margin-left: 30px;*/
+    /*    border-radius: 5px;
+    text-decoration: underline;
+    */
+}
+
+.mbz-nav > span {
+    cursor: default;
+    /*background-color: #486DB6;*/
+    text-decoration: none;
+    /*text-decoration: underline;*/
+}
+
+.mbz-nav > a:hover,
+.mbz-nav > a:focus {
+    font-weight: bold;
+    /*background-color: #003399;*/
+}
+
+.mbz-nav a.active {
+    background-color: rgb(98 47 47 / 25%);
+    color: white;
+}
+.mbz-pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+}
+
+.mbz-page-item.active .page-link {
+    z-index: 1;
+    /*color: #fff;*/
+    /*background-color: #007bff;*/
+    /*border-color: #007bff;*/
+}
+
+.mbz-page-item.disabled .page-link {
+    color: #6c757d;
+    pointer-events: none;
+    cursor: auto;
+    /*background-color: #fff;*/
+    /*border-color: #dee2e6;*/
+}
+
+.mbz-page-item:first-child .page-link {
+    margin-left: 0;
+    /*border-top-left-radius: .25rem;*/
+    /*border-bottom-left-radius: .25rem;*/
+}
+
+.mbz-page-item:last-child .page-link {
+    /*border-top-right-radius: .25rem;*/
+    /*border-bottom-right-radius: .25rem;*/
+}
+
+.mbz-page-link {
+    display: block;
+    padding: 8px 4px;
+    margin-left: -3px;
+    line-height: 1.25;
+    color: #000000;
+    font-family: MBCorpoSTextOffice-Bold;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #fff;
+    /*border: 1px solid #dee2e6;*/
+    /*position: relative;*/
+    /*z-index: -1;*/
+}
+
+
+textarea:focus, input:focus, input[type]:focus {
+    outline: 0 none;
+}
+.mbz-form-control:focus {
+    border: 1px solid red;
+}
+/*
+    Mercedes Benz - CSS - Animacion Score
+*/
+
+.progress-box {
+    /*border: 1px solid #aaa;*/
+    background-color: #fff;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.progress-circle {
+    fill: none;
+    /*stroke-width: 8;*/
+    /*stroke: #168A00;*/
+    stroke-dasharray: 630;
+    stroke-dashoffset: 630;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    stroke-linecap: round;
+}
+
+.progress-circle-back {
+    fill: none;
+    /*stroke-width: 8;*/
+    /*stroke: #EAEAEA;*/
+}
+
+.progress-percentage {
+    position: relative;
+    font-size: 12px;
+    align-self: center;
+}
+.percentage-circle {
+    text-align:center;
+}
+
+/*
+    Mercedes Benz - CSS - Ventana correo
+*/
+
+.tablacorreo {
+    width: 100%;
+    display: table;
+}
+.resultado_email_foto {
+    display: flex;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #D9D9D9;
+}
+.resultado_email {
+    display: flex;
+    margin-bottom: 5px;
+}
+.set-size {
+    margin-left: 25%;
+}
+.titulo {
+    padding: 20px;
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #fff;
+}
+
+.contenedor {
+    width: 100%;
+    display: table;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #D9D9D9;
+}
+.conainer_prop {
+    margin-left: 3%;
+}
+.textos_30 {
+    float: left;
+    width: 33.3%;
+    padding-right: 25px;
+}
+.labels_form {
+    color: #347Bc8;
+    font-weight: 700;
+    margin-left: 15px;
+}
+
+.labels_form_b {
+    color: black;
+    font-weight: 700;
+    margin-left: 15px;
+}
+
+.res_email {
+    float: left;
+    width: 33.3%;
+    padding-left: 1%;
+}
