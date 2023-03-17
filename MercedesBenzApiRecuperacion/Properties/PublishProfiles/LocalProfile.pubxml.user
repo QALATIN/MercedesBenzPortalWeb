@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Publicaciones\Mercedes_Web\MercedesBenzApiRecuperacion\MercedesBenzApiRecuperacion_Last</_PublishTargetUrl>
+    <History>True|2022-11-15T15:27:13.3793321Z;True|2022-11-15T09:16:45.9191302-06:00;True|2022-11-11T17:17:11.6771896-06:00;True|2022-11-11T17:11:16.3014427-06:00;True|2022-11-08T11:53:03.8315965-06:00;True|2022-10-27T15:51:31.8622983-05:00;True|2022-10-26T13:40:42.3679527-05:00;True|2022-10-14T18:02:42.8894741-05:00;True|2022-10-11T16:49:52.6250431-05:00;True|2022-10-11T11:04:37.8827150-05:00;True|2022-10-04T11:17:48.4629816-05:00;True|2022-09-20T17:34:18.9573394-05:00;True|2022-09-20T17:04:08.2285095-05:00;True|2022-09-20T17:03:31.0966519-05:00;</History>
+  </PropertyGroup>
+</Project>
