@@ -1,0 +1,25 @@
+<CascadingAuthenticationState>
+    <Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+        <Found Context="routeData">
+            <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+</CascadingAuthenticationState>
+
+@code{
+    [Parameter] public UserIpAddress userIpAddress { get; set; }
+
+    protected override Task OnInitializedAsync()
+    {
+        Credential.UserAgent = userIpAddress.UserAgent;
+        Credential.RemoteIpAddress = userIpAddress.RemoteIpAddress;
+        Credential.ForwardedIpAddress = userIpAddress.ForwardedIpAddress;
+
+        return base.OnInitializedAsync();
+    }
+}

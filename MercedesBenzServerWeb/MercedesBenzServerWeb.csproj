@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="C:\Users\CAGUILAR\.nuget\packages\blazorpro.spinkit\1.2.0\contentFiles\any\netstandard2.1\libman.json" />
+    <Content Remove="wwwroot\image\UbicacionLatin.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BlazorDateRangePicker" Version="4.2.0" />
+    <PackageReference Include="BlazorPro.Spinkit" Version="1.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.HttpClient" Version="3.2.0-preview3.20168.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MercedesBenzLibrary\MercedesBenzLibrary.csproj" />
+    <ProjectReference Include="..\MercedesBenzLogger\MercedesBenzLogger.csproj" />
+    <ProjectReference Include="..\MercedesBenzModel\MercedesBenzModel.csproj" />
+    <ProjectReference Include="..\MercedesBenzSecurity\MercedesBenzSecurity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Types\" />
+  </ItemGroup>
+
+</Project>

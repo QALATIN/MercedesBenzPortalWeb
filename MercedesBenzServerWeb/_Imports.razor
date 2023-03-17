@@ -1,0 +1,20 @@
+﻿@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@using Microsoft.JSInterop
+@using MercedesBenzServerWeb
+@using MercedesBenzServerWeb.Shared
+@using MercedesBenzModel;
+@using Helpers
+@using MercedesBenzServerWeb.Authentication;
+@using Newtonsoft.Json
+@using BlazorPro.Spinkit
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JS
+@inject AppState AppState
+@inject UserCredential Credential
+@inject BusquedaRequest Busqueda
