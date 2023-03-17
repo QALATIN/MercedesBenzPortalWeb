@@ -1,0 +1,5 @@
+﻿<StaticWebAssets Version="1.0">
+  <ContentRoot BasePath="/" Path="D:\Proyectos\Net\MercedesBenzWeb\MercedesBenzServerWeb\obj\Release\net5.0\win-x64\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/BlazorDateRangePicker" Path="C:\Users\CAGUILAR\.nuget\packages\blazordaterangepicker\4.2.0\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/BlazorPro.Spinkit" Path="C:\Users\CAGUILAR\.nuget\packages\blazorpro.spinkit\1.2.0\build\..\staticwebassets\" />
+</StaticWebAssets>
