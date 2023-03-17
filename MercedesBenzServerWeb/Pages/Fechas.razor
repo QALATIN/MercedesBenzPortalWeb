@@ -1,0 +1,51 @@
+﻿
+<EditForm Model="@Model" OnSubmit="@OnSubmit">
+    <div class="mbz-card-reporte-fechas">
+        <div class="d-flex">
+            <div class="mbz-rep-w-1d3">
+                <label class="mbz-label-edi">Desde</label>
+                <InputDate class="form-control mbz-input-edi" placeholder="Desde" @bind-Value="@Model.FechaInicial" maxlength="10" data-val-date=""/>
+                <ValidationMessage For="@(() => Model.FechaInicial)" />
+            </div>
+            <div class="mbz-rep-w-1d3">
+                <label class="mbz-label-edi">Hasta</label>
+                <InputDate class="form-control mbz-input-edi" placeholder="Hasta" @bind-Value="@Model.FechaFinal" maxlength="10" />
+                <ValidationMessage For="@(() => Model.FechaFinal)" />
+            </div>
+            <div class="mbz-rep-w-1d3">
+                <button type="submit" class="btn mbz-btn-primary mbz-font-Roboto-18">Consultar</button>
+            </div>
+        </div>
+    </div>
+    @if (Descargar)
+    {
+        <div class="mbz-card-reporte-descargar">
+            <div class="d-flex">
+                <div class="mbz-rep-w-1d3">
+                </div>
+                <div class="mbz-rep-w-1d3">
+                </div>
+                <div class="mbz-rep-w-1d3">
+                    <button type="button" class="btn mbz-btn-primary mbz-font-Roboto-18" style="width: 60%;margin-left: 40%;" @onclick="@OnDownload">Descargar 
+                        <img src="../image/Descargar.png" class="float-right" style="width:18px;height:18px;" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</EditForm>
+
+@if (!string.IsNullOrEmpty(Mensaje))
+{
+    <div class="p-3">
+        <div class="container alert-info mbz-font-STextOffice-16">@Mensaje</div>
+    </div>
+}
+
+@code {
+    [Parameter] public FechaRequest Model { get; set; }
+    [Parameter] public EventCallback OnSubmit { get; set; }
+    [Parameter] public EventCallback OnDownload { get; set; }
+    [Parameter] public string Mensaje { get; set; } = "";
+    [Parameter] public bool Descargar { get; set; } = false;
+}

@@ -1,0 +1,39 @@
+﻿<div id="idSemaforoTelefono" style="padding: 20px;">
+    <div class="pb-2">
+        <span class="mbz-font-STextOffice-B-16 mbz-text-dark">@Model.mensaje</span>
+    </div>
+
+    <div class="mbz-card-ficha-carnet mb-3" style="padding: 20px;">
+        <table class="mbz-font-STextOffice-14 mbz-text-dark" style="width: 100%;">
+            <tbody>
+                <tr style="vertical-align: baseline;">
+                    <td style="width: 33%; padding: 10px 40px;">
+                        <span class="mbz-font-STextOffice-B-14">Número:</span>
+                        <br>
+                        <span>@Model.datos_validacion.numero</span>
+                        <br><br>
+                        <span class="mbz-font-STextOffice-B-14">Tipo de red: </span>
+                        <br>
+                        <span>@Model.datos_validacion.tipo_red</span>
+                        <br><br>
+                        <span class="mbz-font-STextOffice-B-14">Marcación internacional:</span>
+                        <br>
+                        <span>@Model.datos_validacion.marcacion_internacional</span>
+                        <br><br>
+                        <span class="mbz-font-STextOffice-B-14">Proveedor:</span>
+                        <br>
+                        <span>@Model.datos_validacion.proveedor</span>
+                    </td>
+                    <td style="width: 33%; padding: 10px 40px;"></td>
+                    <td style="width: 33%; padding: 10px 40px;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public TelefonoResponse Model { get; set; }
+    //[Parameter] public DateTime? FechaConsulta { get; set; }
+}

@@ -1,0 +1,82 @@
+﻿@page "/login"
+@layout LoginLayout
+@inject Services.IAutenticacionService ServiceAutenticacion;
+@inject Services.IUsuarioService ServiceUsuario;
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject LocalStorage LocalStorage
+
+<div class="mbz-ctr mbz-bg-login">
+
+    <div class="mbz-ctr-login-head">
+    </div>
+
+    <div class="mbz-ctr-login">
+        <div class="mbz-ctr-login-title">
+            <span>Iniciar sesión</span>
+        </div>
+
+        <div class="mbz-ctr-login-body">
+            <EditForm Model="@usuario" OnValidSubmit="@OnValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="form-group pb-3">
+                    <InputText id="LoginInputUsuario" class="form-control mbz-font-STextOffice-16 mbz-form-control" style="height: 56px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; " autocomplete="username" placeholder="Usuario" @bind-Value="@usuario.NombreUsuario" />
+                    <ValidationMessage For="@(() => usuario.NombreUsuario)" class="mbz-font-STextOffice-16" />
+                </div>
+                <div class="form-group">
+                    <InputText id="LoginInputPassword" class="form-control mbz-font-STextOffice-16 mbz-form-control" style="height: 56px; box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none; " autocomplete="current-password" type="password" placeholder="Contraseña" maxlength="15" @bind-Value="@usuario.Password" />
+                    <ValidationMessage For="@(() => usuario.Password)" />
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" onclick="myFunction()">Mostrar contraseña
+                </div>
+                @if (!string.IsNullOrEmpty(mensaje))
+                {
+                    <div class="mbz-font-STextOffice-B-14 mbz-text-red pt-2">@mensaje</div>
+                }
+
+                <SpinLoader IsLoading="isLoadingData">
+                    <LoadingTemplate>
+                        <div class="">
+                            <br />
+                            <CircleFade Center="true" Size="20px" Color="#232F3B"></CircleFade>
+                            <br />
+                        </div>
+                    </LoadingTemplate>
+                    <ContentTemplate>
+                        <div class="form-group pt-4">
+                            <button type="submit" class="btn mbz-btn-primary mbz-font-STextOffice-18" style="height: 56px;" disabled=@IsSubmit>Entrar</button>
+                        </div>
+                    </ContentTemplate>
+                </SpinLoader>
+
+                <div class=" text-center p-2">
+                    <div class="checkbox mbz-font-STextOffice-B-14">
+                        <label for="Recordarme">
+                            <input type="checkbox" checked="@recordarme" @onclick="e => recordarme = !recordarme ">
+                            Recordar contraseña
+                        </label>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-bottom: 10px;">
+                    <a class="mbz-font-STextOffice-B-14 mbz-text-primary" id="password" href="javascript: void(0);" @onclick="SendMail">¿Olvidaste la contraseña?</a>
+                </div>
+            </EditForm>
+
+        </div>
+    </div>
+
+    <div class="mbz-ctr-login-footer">
+        <span class="mbz-text-dark" mbz-text-dark>@version</span>
+    </div>
+</div>
+
+@if (popupOpen)
+{
+    <MercedesBenzServerWeb.Pages.Popup.PopupCorreoEnviar Texto=@mensajePopup OnClose="@OnPopupClose"></MercedesBenzServerWeb.Pages.Popup.PopupCorreoEnviar>
+}
+
+@if (popupOpenNotify)
+{
+    <MercedesBenzServerWeb.Pages.Popup.PopupCorreoEnviado Texto="" OnClose="@OnPopupNotifyClose"></MercedesBenzServerWeb.Pages.Popup.PopupCorreoEnviado>
+}
+

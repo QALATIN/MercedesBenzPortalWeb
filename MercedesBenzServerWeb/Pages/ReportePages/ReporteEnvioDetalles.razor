@@ -1,0 +1,158 @@
+﻿@page "/reporteEnvioDetalles"
+@inject Services.IReporteService Service;
+
+<div class="mbz-row-center">
+    <div class="mbz-card-titulo-2 mbz-font-ATitleCondOffice-40 mbz-text-secondary">
+        <span class="">Detalle de envío</span>
+    </div>
+</div>
+
+<Fechas Model="@model" OnSubmit="@OnSubmit" OnDownload="OnDownload" Mensaje="@mensaje" Descargar="@descargar"></Fechas>
+
+<SpinLoader IsLoading="isLoadingData">
+    <LoadingTemplate>
+        <div class="">
+            <br />
+            <CircleFade Center="true" Size="50px" Color="#232F3B"></CircleFade>
+            <br />
+        </div>
+    </LoadingTemplate>
+    <ContentTemplate>
+        @if (respuesta != null)
+        {
+            <table class="table table-bordered table-striped table-hover mbz-tb-buscar">
+                <thead>
+                    <tr>
+                        <th>Agencia</th>
+                        <th>Cliente</th>
+                        <th style="width:120px;">Folio</th>
+                        <th style="width:70px;">Fecha Captura</th>
+                        <th style="width:70px;">Fecha Envío</th>
+                        <th>Tipo Documento</th>
+                        <th style="width:92px;">Tipo Alerta</th>
+                        <th>INE Respuesta</th>
+                        <th>Revisión Analista</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in JsonConvert.DeserializeObject<IEnumerable<ReporteDetalleEnvioResponse>>(respuesta.Data.ToString()))
+                    {
+                        <tr>
+                            <td>@item.AgenciaNombre</td>
+                            <td>@item.ClienteNombre</td>
+                            <td>@item.Folio</td>
+                            <td>@item.FechaCaptura.ToString("dd/MM/yyyy")</td>
+                            <td>@item.FechaEnvio.ToString("dd/MM/yyyy")</td>
+                            <td>@item.TipoDocumento</td>
+                            <td>@item.TipoAlerta</td>
+                            <td>@item.IneRespuesta</td>
+                            <td>@item.RevisionAnalista</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <Paginacion PaginaActual="paginaActual" PaginasTotal="paginasTotal" PaginaSeleccionada="PaginaSeleccionada"></Paginacion>
+        }
+    </ContentTemplate>
+</SpinLoader>
+
+
+@code {
+    [CascadingParameter(Name = "RegistrosPagina")]
+    protected int registrosPagina { get; set; }
+
+    FechaRequest model = new();
+    PaginacionRequest paginacion = new();
+    RespuestaPaginada respuesta = null;
+    string mensaje = "";
+    private bool isLoadingData = false;
+
+    private bool descargar = false;
+
+    private int totalRegistros = 0;
+    private int paginaActual = 1;
+    private int paginasTotal = 0;
+
+    protected override void OnInitialized()
+    {
+        model.FechaInicial = DateTime.Now.AddDays(-(DateTime.Now.Day - 1));
+        model.FechaFinal = DateTime.Now;
+        paginacion.Pagina = paginaActual;
+        paginacion.RegistrosPagina = registrosPagina;
+    }
+
+    private async Task OnSubmit()
+    {
+        bool IsData = false;
+
+        if (!string.IsNullOrEmpty(model.FechaInicial.ToString()))
+            IsData = true;
+        if (!string.IsNullOrEmpty(model.FechaFinal.ToString()))
+            IsData = true;
+        if (IsData)
+        {
+            paginaActual = 1;
+            await PaginaSeleccionada(paginaActual);
+        }
+        else
+        {
+            mensaje = "Debe ingresar la fecha inicial y la fecha final";
+            respuesta = null;
+        }
+        return;
+    }
+
+    private async Task OnDownload()
+    {
+        mensaje = "Descargando reporte ...";
+        model.FechaInicial = new DateTime(model.FechaInicial.Year, model.FechaInicial.Month, model.FechaInicial.Day, 00, 00, 00);
+        model.FechaFinal = new DateTime(model.FechaFinal.Year, model.FechaFinal.Month, model.FechaFinal.Day, 23, 59, 59);
+        (string mensajeResponse, byte[] respuestaResponse) = await Service.DownloadReporteAsync("reportes/detalleEnvioDescargar", model);
+        if (respuestaResponse == null)
+        {
+            mensaje = mensajeResponse;
+        }
+        else
+        {
+            var nombreArchivo = $"Reporte_DetalleEnvios_{DateTime.Now.ToString("yyyy-MM-dd")}.xlsx";
+            await JS.InvokeAsync<object>("saveAsFile", nombreArchivo, Convert.ToBase64String(respuestaResponse));
+            mensaje = "Descarga Finalizada";
+        }
+    }
+
+    private async Task PaginaSeleccionada(int pagina)
+    {
+        paginaActual = pagina;
+        isLoadingData = true;
+        this.StateHasChanged();
+        await ConsultarDatos(paginaActual);
+        isLoadingData = false;
+        this.StateHasChanged();
+    }
+
+    private async Task ConsultarDatos(int pagina = 1)
+    {
+        descargar = false;
+        mensaje = "";
+        model.FechaInicial = new DateTime(model.FechaInicial.Year, model.FechaInicial.Month, model.FechaInicial.Day, 00, 00, 00);
+        model.FechaFinal = new DateTime(model.FechaFinal.Year, model.FechaFinal.Month, model.FechaFinal.Day, 23, 59, 59);
+        paginacion.Pagina = pagina;
+        (string mensajeResponse, RespuestaPaginada respuestaResponse) = await Service.GetReporteAsync("reportes/detalleEnvio", model, paginacion);
+        respuesta = respuestaResponse;
+        if (respuesta == null)
+        {
+            if (string.IsNullOrEmpty(mensajeResponse) || mensajeResponse == "True")
+                mensaje = "No se encontraron datos del período ingresado";
+            else
+                mensaje = mensajeResponse;
+        }
+        else
+        {
+            totalRegistros = respuesta.TotalRegistros;
+            paginasTotal = respuesta.TotalPaginas;
+            mensaje = "";
+            descargar = true;
+        }
+    }
+
+}

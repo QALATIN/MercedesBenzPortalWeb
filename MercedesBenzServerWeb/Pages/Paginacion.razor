@@ -1,0 +1,111 @@
+﻿@if (PaginasTotal > 1)
+{
+<nav>
+    <ul class="mbz-pagination justify-content-center">
+        @foreach (var pagina in paginas)
+        {
+        <li @onclick="@(() => PaginaSeleccionadaInterno(pagina))"
+            style="cursor:pointer;"
+            class="mbz-page-item @(pagina.Habilitada ? null : " disabled") @(pagina.Activa ? "active" : null) ">
+            @if (pagina.Texto == "<")
+            {
+                <span class="mbz-page-link" href="#">
+                    <img src="../image/chevron-back-outline.svg" style="width:20px;height:20px;" />
+                </span>
+            }
+            else @if (pagina.Texto == ">")
+            {
+                <span class="mbz-page-link" href="#">
+                    <img src="../image/chevron-forward-outline.svg" style="width:20px;height:20px;" />
+                </span>
+            }
+            else
+            {
+                <span class="mbz-page-link" href="#">@pagina.Texto</span>
+            }
+        </li>
+        }
+    </ul>
+</nav>
+}
+
+@code {
+    [Parameter] public int PaginaActual { get; set; } = 1;
+    [Parameter] public int PaginasTotal { get; set; } = 1;
+    [Parameter] public int Radio { get; set; } = 0;
+    [Parameter] public EventCallback<int>
+
+    PaginaSeleccionada { get; set; }
+    List<Paginas>
+    paginas = new List<Paginas>();
+
+    protected override void OnParametersSet()
+    {
+        CargarPaginas();
+    }
+
+    private async Task PaginaSeleccionadaInterno(Paginas pagina)
+    {
+        if (pagina.Pagina == PaginaActual)
+        {
+            return;
+        }
+        if (!pagina.Habilitada)
+        {
+            return;
+        }
+        PaginaActual = pagina.Pagina;
+        CargarPaginas();
+        await PaginaSeleccionada.InvokeAsync(pagina.Pagina);
+    }
+
+    private void CargarPaginas()
+    {
+        paginas = new List<Paginas>();
+        var paginaAnteriorHabilitada = PaginaActual != 1;
+        var paginaAnterior = (PaginaActual == 1) ? 1 : PaginaActual - 1;
+        paginas.Add(new Paginas(paginaAnterior, paginaAnteriorHabilitada, "<"));
+        for (int i = 1; i <= PaginasTotal; i++)
+        {
+            if (i >= PaginaActual - Radio && i <= PaginaActual + Radio)
+            {
+                //paginas.Add(new Paginas(i) { Activa = PaginaActual == i });
+                paginas.Add(new Paginas(false, i, false, $"{i.ToString()}/{PaginasTotal.ToString()}"));
+            }
+        }
+        var paginaSiguienteHabilitada = PaginaActual != PaginasTotal;
+        var paginaSiguiente = (PaginaActual == PaginasTotal) ? PaginasTotal : PaginaActual + 1;
+        paginas.Add(new Paginas(paginaSiguiente, paginaSiguienteHabilitada, ">"));
+    }
+
+    public class Paginas
+    {
+
+        public int Pagina { get; set; }
+        public bool Habilitada { get; set; }
+        public bool Activa { get; set; }
+        public string Texto { get; set; }
+
+        public Paginas(int pagina) : this(pagina, true)
+        {
+        }
+
+        public Paginas(int pagina, bool habilitada) : this(pagina, habilitada, pagina.ToString())
+        {
+        }
+
+        public Paginas(int pagina, bool habilitada, string texto)
+        {
+            Pagina = pagina;
+            Habilitada = habilitada;
+            Texto = texto;
+        }
+        public Paginas(bool activa, int pagina, bool habilitada, string texto)
+        {
+            Activa = activa;
+            Pagina = pagina;
+            Habilitada = habilitada;
+            Texto = texto;
+        }
+    }
+}

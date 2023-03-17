@@ -1,0 +1,30 @@
+﻿
+<div class="mbz-modal-container">
+    <div class="mbz-modal" style="@(string.IsNullOrEmpty(CssAltoModal) ? "" : CssAltoModal)">
+        <div class="mbz-modal-header">
+            <a class="mbz-modal-close" href="javascript: void(0);" @onclick="OnModalOk">
+                <img src="../image/Cerrar.png" />
+            </a>
+        </div>
+        <div class="mbz-modal-content">
+            <a class="" href="javascript: void(0);" @onclick="OnModalOk">
+                <img src="../image/Exito.png" />
+            </a>
+        </div>
+        <div class="mbz-modal-footer">
+            <span class="mbz-font-STextOffice-B-30 mbz-text-secondary">@((MarkupString)Texto)</span>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Texto { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+    [Parameter] public string CssAltoModal { get; set; } = "";
+
+    private Task OnModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+
+}

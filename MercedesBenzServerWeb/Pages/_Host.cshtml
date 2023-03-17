@@ -1,0 +1,57 @@
+﻿@page "/"
+@namespace MercedesBenzServerWeb.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@using System.Net
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mercedes Benz</title>
+    <base href="~/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/mbenz.css" rel="stylesheet" />
+    <link href="MercedesBenzServerWeb.styles.css" rel="stylesheet" />
+    <link href="_content/BlazorDateRangePicker/daterangepicker.min.css" rel="stylesheet" />
+    <link href="_content/BlazorPro.Spinkit/spinkit.min.css" rel="stylesheet" />
+</head>
+<body>
+    @{
+        string remoteIpAddress = HttpContext.Connection?.RemoteIpAddress.ToString();
+
+        //127.0.0.1,::1    localhost
+        if (remoteIpAddress == "::1")
+            remoteIpAddress = Dns.GetHostEntry(Dns.GetHostName()).AddressList[1].ToString();
+
+        var userIpAddress = new MercedesBenzModel.UserIpAddress
+        {
+            UserAgent = HttpContext.Request.Headers["User-Agent"],
+            RemoteIpAddress = remoteIpAddress,
+            ForwardedIpAddress = HttpContext.Request.Headers.ContainsKey("X-Forwarded-For") ? HttpContext.Request.Headers["X-Forwarded-For"].ToString() : null
+        };
+
+    }
+    <component type="typeof(App)" render-mode="ServerPrerendered" param-UserIpAddress="userIpAddress" />
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            Se ha producido un error. Es posible que esta aplicación ya no responda hasta que se vuelva a cargar.
+        </environment>
+        <environment include="Development">
+            Se ha producido una excepción no controlada. Consulte las herramientas de desarrollo del navegador para obtener más información.
+        </environment>
+        <a href="" class="reload">Recargar</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="_framework/blazor.server.js"></script>
+    <script src="/js/Utilidades.js"></script>
+    <script src="_content/BlazorDateRangePicker/clickAndPositionHandler.js"></script>
+</body>
+</html>

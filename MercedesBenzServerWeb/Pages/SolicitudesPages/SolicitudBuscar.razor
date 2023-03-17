@@ -1,0 +1,133 @@
+﻿@page "/solicitudBuscar"
+@inject Services.IBusquedaService Service;
+@inject Services.IPaqueteService ServicePaquete
+@using BlazorDateRangePicker;
+
+<div class="mbz-row-center">
+    <div class="mbz-card-titulo-2 mbz-font-ATitleCondOffice-40 mbz-text-secondary">
+        <span class="">Buscar solicitudes</span>
+    </div>
+</div>
+
+<div class="mbz-card-buscar">
+    <EditForm Model="@model" OnSubmit="@OnSubmit">
+
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Nombre(s)</label>
+                <input type="text" @ref="InputNombre" class="form-control mbz-input-edi" placeholder="Nombre" @bind="@model.Nombre" maxlength="50" @onkeyup="(e => OnKeyboardText(e, InputNombre))" @onpaste="(e => OnPasteText(InputNombre))"/>
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Apellido paterno</label>
+                <input type="text" @ref="InputPaterno" class="form-control mbz-input-edi" placeholder="Apellido paterno" @bind="@model.ApellidoPaterno" maxlength="50" @onkeyup="(e => OnKeyboardText(e, InputPaterno))" @onpaste="(e => OnPasteText(InputPaterno))"/>
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Apellido materno</label>
+                <input type="text" @ref="InputMaterno" class="form-control mbz-input-edi" placeholder="Apellido materno" @bind="@model.ApellidoMaterno" maxlength="50" @onkeyup="(e => OnKeyboardText(e, InputMaterno))" @onpaste="(e => OnPasteText(InputMaterno))"/>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <DateRangePicker @ref="Picker" Culture="@(System.Globalization.CultureInfo.GetCultureInfo("es-MX"))" DateFormat="dd MMMM yyyy" AutoApply="true"
+                                 MinDate="MinDate" MaxDate="MaxDate"
+                                 StartDate="@model.FechaInicial" EndDate="@model.FechaFinal" OnRangeSelect="OnRangeSelect"
+                                 OnOpened="OnDatePickerOpened"
+                                 OnClosed="OnDatePickerClosed">
+                    <PickerTemplate Context="PickerContext">
+                        <div id="@PickerContext.Id" @onclick="PickerContext.Toggle" class="mbz-picker-range-buscar">
+                            <i class="">
+                                <img src="../image/calendario.png" style="width:22px;height:20px;" />
+                            </i>&nbsp;
+                            <input class="mbz-input-picker-range" value="@PickerContext.FormattedRange" placeholder="Rango de fechas"
+                                   @onchange="((ChangeEventArgs __e) => OnRangeChange(__e.Value.ToString().Trim()))" />
+                            <i class="float-right">
+                                <img src="../image/chevron-down-outline.svg" style="width:18px;height:18px;" />
+                            </i>
+                        </div>
+                    </PickerTemplate>
+                </DateRangePicker>
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Folio</label>
+                <input type="text" @ref="InputFolio" class="form-control mbz-input-edi" placeholder="Folio" @bind="@model.Folio" maxlength="13" @onkeyup="OnKeyboardNumeric" @onpaste="(e => OnPasteNumeric(InputFolio))" />
+            </div>
+        </div>
+
+        <div class="d-flex pt-3 pb-4">
+            <div class="mbz-edi-w-1d3">
+            </div>
+            <div class="mbz-edi-w-1d3">
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <button type="submit" class="btn mbz-btn-primary mbz-font-STextOffice-18">Buscar</button>
+            </div>
+        </div>
+
+    </EditForm>
+
+    @if (!string.IsNullOrEmpty(mensaje))
+    {
+        <div class="container alert-info mbz-font-STextOffice-16 mb-3">@mensaje</div>
+    }
+
+    <SpinLoader IsLoading="isLoadingData">
+        <LoadingTemplate>
+            <div class="">
+                <br />
+                <CircleFade Center="true" Size="50px" Color="#232F3B"></CircleFade>
+                <br />
+            </div>
+        </LoadingTemplate>
+        <ContentTemplate>
+            @if (respuesta != null)
+            {
+                <table class="table table-bordered table-striped table-hover mbz-tb-buscar">
+                    <thead>
+                        <tr>
+                            <th style="width:120px;">Folio</th>
+                            <th style="">Nombre</th>
+                            <th style="width:110px;">Tipo cliente</th>
+                            <th style="width:110px;">Tipo Documento</th>
+                            <th style="width:200px;">Correo electrónico</th>
+                            <th style="width:40px;">Lista Negra</th>
+                            <th style="width:70px;">Fecha Envío</th>
+                            <th style="width:80px;">Estado Solicitud</th>
+                            <th style="width: 50px;">Ver detalles</th>
+                            <th style="width: 50px;">Huellas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in JsonConvert.DeserializeObject<IEnumerable<BusquedaResultado>>(respuesta.Data.ToString()))
+                        {
+                            <tr>
+                                <td>@item.Folio</td>
+                                <td style="text-align: left;">@item.NombreCompleto</td>
+                                <td>@item.TipoCliente</td>
+                                <td>@item.TipoDocumento</td>
+                                <td>@item.CorreoElectronico </td>
+                                <td>@item.ListaNegra</td>
+                                <td>@item.FechaEnvio.ToString("dd/MM/yyyy")</td>
+                                <td>@item.EstadoSolicitud</td>
+                                <td>
+                                    <a class="text-muted " href="javascript: void(0);" @onclick="(() => ConsultarSolicitud(item.SolicitanteId))">
+                                        <img src="../image/search-outline.svg" style="width:18px;height:18px;" />
+                                    </a>
+                                </td>
+                                <td>
+                                    <a class="text-muted " href="javascript: void(0);" @onclick="(() => DescargarHuellas(item.SolicitanteId, item.Folio))">
+                                        <img src="../image/descargarDark.png" style="width:18px;height:18px;" />
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <Paginacion PaginaActual="paginaActual" PaginasTotal="paginasTotal" PaginaSeleccionada="PaginaSeleccionada"></Paginacion>
+            }
+        </ContentTemplate>
+    </SpinLoader>
+
+</div>

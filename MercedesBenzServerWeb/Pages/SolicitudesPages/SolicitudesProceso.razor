@@ -1,0 +1,6 @@
+﻿@page "/solicitudesProceso/{estatus:int}"
+<Solicitudes estatus="@estatus"></Solicitudes>
+
+@code {
+    [Parameter] public int estatus { get; set; }
+}

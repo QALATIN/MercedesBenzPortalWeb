@@ -1,0 +1,36 @@
+﻿@if (Solicitudes != null)
+{
+    <ul>
+        <li><span class="mbz-font-STextOffice-B-28">Notificaciones</span></li>
+        @foreach (var item in Solicitudes)
+        {
+            <li>
+                <div class="mbz-bt-secondary p-2"></div>
+                <a href="javascript: void(0);" @onclick="(() => ConsultarSolicitud(item.SolicitanteId))">
+                    <div class="mbz-content-center">
+                        <div class="mbz-w-90p ">
+                            <div><span class="">Nueva solicitud en espera</span></div>
+                            <div><span class="">@item.NombreCompleto</span></div>
+                        </div>
+                        <div class="mbz-w-10p">
+                            <span class="mbz-span-sem-primary" style="width:25px; height:25px;">&nbsp;</span>
+                        </div>
+                    </div>
+                </a>
+                <div class="pb-2">
+                    <span class="mbz-font-STextOffice-12 mbz-text-primary">@item.TiempoRegistro</span>
+                </div>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter] public List<SolicitudNotificacion> Solicitudes { get; set; }
+
+    private void ConsultarSolicitud(int Id)
+    {
+        NavigationManager.NavigateTo($"/solicitudNotificacion/{Id}");
+    }
+
+}

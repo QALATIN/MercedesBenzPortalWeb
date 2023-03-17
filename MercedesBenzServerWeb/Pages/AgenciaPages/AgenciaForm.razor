@@ -1,0 +1,146 @@
+﻿@inject Services.IAgenciaService ServiceAgencia;
+@inject Services.ICatalogoService ServiceCatalogo;
+
+<div class="mbz-row-center">
+    <div class="mbz-card-titulo-1 ">
+        <span class="mbz-font-ATitleCondOffice-40">@Title</span>
+    </div>
+</div>
+
+<div class="mbz-card-edicion">
+    <EditForm Model="@agencia" OnValidSubmit="@OnValidSubmit">
+        <DataAnnotationsValidator />
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Clave</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Clave" @bind-Value="@agencia.ClaveAgencia" />
+                <ValidationMessage For="@(() => agencia.ClaveAgencia)" />
+            </div>
+            <div class="mbz-edi-w-2d3">
+                <label class="mbz-label-edi">Nombre de la agencia</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Nombre de la gencia" @bind-Value="@agencia.NombreAgencia" />
+                <ValidationMessage For="@(() => agencia.NombreAgencia)" />
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mbz-edi-w-100p">
+                <label class="mbz-label-edi">Dirección</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Calle, colonia, código postal" @bind-Value="@agencia.Direccion" />
+                <ValidationMessage For="@(() => agencia.Direccion)" />
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Tipo de agencia</label>
+                <InputSelect class="form-control mbz-input-edi" @bind-Value="@agencia.TipoAgenciaId">
+                    @if (tiposAgencia != null)
+                    {
+                        @foreach (var tipo in tiposAgencia)
+                        {
+                            <option value="@tipo.TipoAgenciaId">@tipo.TipoAgenciaNombre</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => agencia.TipoAgenciaId)" />
+            </div>
+            <div class="mbz-edi-w-1d3">
+                @if (agenciaId <= 0)
+                {
+                    <button type="reset" class="btn mbz-btn-cancelar mbz-font-STextOffice-18 mbz-text-primary" @onclick="@OnLimpiar">Limpiar</button>
+                }
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <button type="submit" class="btn mbz-btn-primary mbz-font-STextOffice-18">@ButtonText</button>
+            </div>
+        </div>
+
+    </EditForm>
+    @if (!string.IsNullOrEmpty(mensaje))
+    {
+        <div class="container alert-info mbz-font-STextOffice-16">@mensaje</div>
+    }
+
+    @if (popupOpen)
+    {
+        <MercedesBenzServerWeb.Pages.Popup.PopupNotificacion Texto=@mensajePopup OnClose="@OnPopupClose" ></MercedesBenzServerWeb.Pages.Popup.PopupNotificacion>
+    }
+
+</div>
+
+@code {
+
+    [Parameter]
+    public string AgenciaId { get; set; } = "0";
+    [Parameter]
+    public string Title { get; set; } = "Agencia";
+    [Parameter]
+    public string ButtonText { get; set; } = "Guardar";
+
+    int agenciaId = -1;
+    private TipoAccion tipoAccion { get; set; }
+
+    Agencia agencia = new Agencia();
+
+    IEnumerable<AgenciaTipoSeleccion> tiposAgencia = null;
+    private string mensaje = "";
+    private string mensajePopup = "";
+
+    private bool popupOpen { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        (string mensajeAgenciaTipo, IEnumerable<AgenciaTipoSeleccion> tiposAgenciaResponse) = await ServiceCatalogo.GetAllTiposAgenciaAsync();
+        if(tiposAgenciaResponse != null)
+        {
+            tiposAgencia = tiposAgenciaResponse;
+            agenciaId = int.Parse(AgenciaId);
+            if (agenciaId > 0)
+            {
+                (string mensajeResponse, Agencia agenciaResponse) = await ServiceAgencia.GetByIdAsync(agenciaId);
+                if (agenciaResponse != null)
+                    agencia = agenciaResponse;
+                else
+                    mensaje = mensajeResponse;
+            }
+        }
+        else
+            mensaje = mensajeAgenciaTipo;
+    }
+
+    public async Task OnValidSubmit()
+    {
+        (string mensajeResponse, Agencia agenciaResponse) response;
+        if (agencia.AgenciaId == 0)
+        {
+            tipoAccion = TipoAccion.Agregar;
+            response = await ServiceAgencia.AddAsync(agencia);
+            mensajePopup = "Agencia agregada con éxito";
+        }
+        else
+        {
+            tipoAccion = TipoAccion.Editar;
+            response = await ServiceAgencia.UpdateAsync(agencia);
+            mensajePopup = "Agencia actualizada con éxito";
+        }
+        if (response.agenciaResponse != null)
+            popupOpen = true;
+        else
+            mensaje = response.mensajeResponse;
+    }
+
+    private void OnLimpiar()
+    {
+        agencia = new Agencia();
+    }
+
+    private void OnPopupClose(bool resultado)
+    {
+        if (tipoAccion == TipoAccion.Agregar)
+            NavigationManager.NavigateTo("/agenciaAdmin");
+        else
+            NavigationManager.NavigateTo("/agenciaLista");
+    }
+
+}

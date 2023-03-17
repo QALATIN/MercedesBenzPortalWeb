@@ -1,0 +1,67 @@
+﻿<div id="idSemaforoIdentificacion" style="padding: 20px;">
+
+    <div class="pt-2 pb-2">
+        <span class="mbz-font-STextOffice-B-16 mbz-text-dark">Capturas de identificación</span>
+    </div>
+
+    <div class="mbz-card-ficha-carnet mb-4">
+        <div class="d-flex">
+            <div class="mbz-w-50p">
+                <p class="text-center">
+                    @if (Model.Identificaciones != null)
+                    {
+                        @foreach (var item in @Model.Identificaciones)
+                        {
+                            if (item.CapturaNombreId == 1)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(item.Imagen)" style="max-width: 430px; max-height: 272px;" />
+                            }
+                        }
+                    }
+                </p>
+            </div>
+            <div class="mbz-w-50p">
+                <p class="text-center">
+                    @if (Model.Identificaciones != null)
+                    {
+                        @foreach (var item in @Model.Identificaciones)
+                        {
+                            if (item.CapturaNombreId == 4)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(item.Imagen)" style="max-width: 430px; max-height: 272px;" />
+                            }
+                        }
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    @if (@Model.DocumentoPdf != null)
+    {
+        <div class="d-flex">
+            <div class="pb-3">
+                <button type="button" class="btn mbz-btn-primary mbz-btn-h-28 mbz-font-STextOffice-B-14" @onclick="e => mostrarPdf = !mostrarPdf">
+                    @if (mostrarPdf)
+                    {
+                        <span>Ocultar Pdf</span>
+                    }
+                    else
+                    {
+                        <span>Mostrar Pdf</span>
+                    }
+                </button>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="mbz-w-100p pb-2">
+                <iframe src="data:application/pdf;base64,@Convert.ToBase64String(@Model.DocumentoPdf)#zoom=FitH" typeof="application/pdf" style="width: 100%; height: 340px; border: 1px solid #707070; @(mostrarPdf ? string.Empty: "display: none") " frameborder="0"></iframe>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public SolicitudIdentificacion Model { get; set; }
+    private bool mostrarPdf = false;
+
+}

@@ -1,0 +1,222 @@
+﻿@page "/agenciaLista"
+@inject Services.IAgenciaService Service;
+
+<div class="mbz-row-center">
+    <div class="mbz-card-titulo-1 ">
+        <span class="mbz-font-ATitleCondOffice-40">Lista de agencias</span>
+    </div>
+</div>
+
+@if (!string.IsNullOrEmpty(mensaje))
+{
+    <div class="container alert-info mbz-font-STextOffice-16">@mensaje</div>
+}
+
+<SpinLoader IsLoading="isLoadingData">
+    <LoadingTemplate>
+        <div class="">
+            <br />
+            <CircleFade Center="true" Size="50px" Color="#232F3B"></CircleFade>
+            <br />
+        </div>
+    </LoadingTemplate>
+    <ContentTemplate>
+        @if (respuesta != null)
+        {
+            <table class="table table-bordered table-striped table-hover mbz-tb">
+                <thead>
+                    <tr>
+                        <th style="width: 90px;">Clave</th>
+                        <th style="width: 230px;">Agencia</th>
+                        <th style="width: 125px;">Tipo</th>
+                        <th style="">Dirección</th>
+                        <th style="width: 64px;">¿Está activo?</th>
+                        <th style="">Motivo estatus</th>
+                        <th style="width: 56px;">Editar</th>
+                        <th style="width: 68px;">Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in JsonConvert.DeserializeObject<IEnumerable<Agencia>>(respuesta.Data.ToString()))
+                    {
+                        <tr>
+                            <td>@item.ClaveAgencia</td>
+                            <td>@item.NombreAgencia</td>
+                            <td>@item.TipoAgenciaNombre</td>
+                            <td>@item.Direccion</td>
+                            <td>@(@item.Activo ? "Sí" : "No")</td>
+                            <td>@item.Motivo</td>
+                            <td class="mbz-ali-ico">
+                                <a class="" style="" href="javascript: void(0);" @onclick="(() => OnEditar(item.AgenciaId, item.NombreAgencia))">
+                                    <img src="../image/Editar.png" style="width:20px;height:20px;" />
+                                </a>
+                            </td>
+                            <td class="mbz-ali-ico">
+                                @if (item.Activo)
+                                {
+                                    <a class="" style="" href="javascript: void(0);" @onclick="(() => OnCambiarEstatus(false, item.AgenciaId, item.NombreAgencia))">
+                                        <img src="../image/Activo.png" />
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="" style="" href="javascript: void(0);" @onclick="(() => OnCambiarEstatus(true, item.AgenciaId, item.NombreAgencia))">
+                                        <img src="../image/Inactivo.png" />
+                                    </a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <Paginacion PaginaActual="paginaActual" PaginasTotal="paginasTotal" PaginaSeleccionada="PaginaSeleccionada"></Paginacion>
+
+            @if (popupOpen)
+            {
+                <MercedesBenzServerWeb.Pages.Popup.PopupPregunta Texto=@mensajePopup OnClose="@OnPopupClose"></MercedesBenzServerWeb.Pages.Popup.PopupPregunta>
+            }
+
+            @if (popupOpenComent)
+            {
+                <MercedesBenzServerWeb.Pages.Popup.PopupComentario Texto=@mensajePopupComent OnClose="@OnPopupComentClose"></MercedesBenzServerWeb.Pages.Popup.PopupComentario>
+            }
+        }
+    </ContentTemplate>
+</SpinLoader>
+
+@code {
+    [CascadingParameter(Name = "RegistrosPagina")]
+    protected int registrosPagina { get; set; }
+
+    PaginacionRequest paginacion = new();
+    RespuestaPaginada respuesta = null;
+    private string mensaje = String.Empty;
+
+    private bool isLoadingData = true;
+
+    private int id = 0;
+    private string NombreAgencia = "";
+    private bool activarAgencia = false;
+    private TipoAccion tipoAccion { get; set; }
+
+    private int totalRegistros = 0;
+    private int paginaActual = 1;
+    private int paginasTotal = 0;
+
+    private bool popupOpen { get; set; } = false;
+    private string mensajePopup = "";
+
+    private bool popupOpenComent { get; set; } = false;
+    private string mensajePopupComent = "";
+
+    protected override void OnInitialized()
+    {
+        paginacion.Pagina = paginaActual;
+        paginacion.RegistrosPagina = registrosPagina;
+    }
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Run(async () =>
+            {
+                await ConsultarDatos();
+                isLoadingData = false;
+                await InvokeAsync(StateHasChanged);
+            });
+        }
+    }
+
+    private async Task PaginaSeleccionada(int pagina)
+    {
+        paginaActual = pagina;
+        isLoadingData = true;
+        this.StateHasChanged();
+        await ConsultarDatos(paginaActual);
+        isLoadingData = false;
+        this.StateHasChanged();
+    }
+
+    private async Task ConsultarDatos(int pagina = 1)
+    {
+        paginacion.Pagina = pagina;
+        (string mensajeResponse, RespuestaPaginada respuestaResponse) = await Service.GetAllAsync(paginacion);
+        if (respuestaResponse == null)
+        {
+            if (string.IsNullOrEmpty(mensajeResponse))
+                mensaje = "No se encontraron registros";
+            else
+                mensaje = mensajeResponse;
+        }
+        else
+        {
+            respuesta = respuestaResponse;
+            totalRegistros = respuesta.TotalRegistros;
+            paginasTotal = respuesta.TotalPaginas;
+            mensaje = "";
+        }
+    }
+
+    private void OnEditar(int selectId, string nombre)
+    {
+        id = selectId;
+        NombreAgencia = nombre;
+        mensajePopup = $"¿Estas seguro de editar la agencia {nombre}?";
+        tipoAccion = TipoAccion.Editar;
+        popupOpen = true;
+    }
+
+    private void OnCambiarEstatus(bool estatus, int selectId, string nombre)
+    {
+        activarAgencia = estatus;
+        id = selectId;
+        NombreAgencia = nombre;
+        string mensajeEstatus = "desactivar";
+        if (activarAgencia)
+            mensajeEstatus = "activar";
+
+        mensajePopup = $"¿Estas seguro de {mensajeEstatus} la agencia {nombre}?";
+        tipoAccion = TipoAccion.Eliminar;
+        popupOpen = true;
+    }
+
+    private void OnPopupClose(bool respuesta)
+    {
+        popupOpen = false;
+        if (respuesta)
+        {
+            if (tipoAccion == TipoAccion.Editar)
+            {
+                NavigationManager.NavigateTo($"agenciaEditar/{id}");
+            }
+            else
+            {
+                mensajePopupComent = "Agregar comentario";
+                popupOpenComent = true;
+            }
+        }
+    }
+
+    private async Task OnPopupComentClose(string respuesta)
+    {
+        popupOpenComent = false;
+        if (!string.IsNullOrEmpty(respuesta))
+        {
+            mensaje = "";
+            AgenciaEstatusRequest request = new()
+            {
+                Activar = activarAgencia,
+                AgenciaId = id,
+                Motivo = respuesta,
+                UsuarioIdActualizo = Credential.UsuarioId,
+            };
+            (string mensajeResponse, bool resultado) = await Service.UpdateEstatuAsync(request);
+            if (resultado)
+                await PaginaSeleccionada(paginaActual);
+            else
+                mensaje = mensajeResponse;
+        }
+    }
+
+}

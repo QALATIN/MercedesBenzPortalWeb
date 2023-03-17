@@ -1,0 +1,116 @@
+﻿@page "/login/recovery/{token}"
+@inject Services.IRecuperacionService Service;
+@layout LoginLayout
+
+<div class="mbz-ctr-full">
+    <div class="mbz-ctr mbz-bg-login">
+
+        <div class="mbz-ctr-login-head">
+        </div>
+
+        <div class="mbz-ctr-recovery">
+            <div class="mbz-ctr-login-title">
+                <span>Recuperación de contraseña</span>
+            </div>
+
+            @if (!passwordRestablecido)
+            {
+                @if (model != null)
+                {
+                    <div class="mbz-ctr-login-body">
+                        <EditForm Model="@model" OnValidSubmit="@OnValidSubmit">
+                            <DataAnnotationsValidator />
+                            <div class="form-group pb-3">
+                                <InputText class="form-control mbz-font-STextOffice-16" style="height: 56px;" autocomplete="email" placeholder="Correo electrónico" @bind-Value="@model.CorreoElectronico" disabled="true" />
+                            </div>
+                            <div class="form-group pb-3">
+                                <InputText class="form-control mbz-font-STextOffice-16" style="height: 56px;" autocomplete="password" type="password" placeholder="Contraseña" maxlength="15" @bind-Value="@model.Password" />
+                                <ValidationMessage For="@(() => model.Password)" />
+                            </div>
+                            <div class="form-group pb-3">
+                                <InputText class="form-control mbz-font-STextOffice-16" style="height: 56px;" autocomplete="confirm-password" type="password" placeholder="Confirmar Contraseña" maxlength="15" @bind-Value="@model.ConfirmarPassword" />
+                                <ValidationMessage For="@(() => model.ConfirmarPassword)" />
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn mbz-btn-primary mbz-font-STextOffice-18" style="height: 56px;" disabled=@IsSubmit>Guardar</button>
+                            </div>
+                        </EditForm>
+                    </div>
+                    @if (!string.IsNullOrEmpty(mensaje))
+                    {
+                        <div class="container alert-info mbz-font-STextOffice-16">@mensaje</div>
+                    }
+                }
+                else
+                @if (!string.IsNullOrEmpty(mensaje))
+                {
+                    <div class="mbz-ctr-recovery-mensaje">
+                        @mensaje
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="mbz-ctr-recovery-mensaje">
+                    Se ha restablecido la contraseña
+                </div>
+                <div class="mbz-ctr-recovery-mensaje">
+                    <a class="mbz-nav-item mbz-font-STextOffice-25 mbz-text-primary" href="Index" style="text-decoration: none;">
+                        <span class="mbz-text-primary">Ir a la página de inicio</span>
+                    </a>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+@code {
+
+    [Parameter] public string token { get; set; }
+
+    ResetPassword model = null;
+
+    private string mensaje = String.Empty;
+    bool IsSubmit = false;
+    bool passwordRestablecido = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(token))
+            mensaje = "El Link es inválido";
+        else
+        {
+            if (model == null)
+            {
+                (string mensajeResponse, ValidacionTokenRecuperacion recuperacion) = await Service.ValidarTokenRecuperacionAsync(new TokenRequest() { Token = token });
+                if (!string.IsNullOrEmpty(mensajeResponse))
+                    mensaje = mensajeResponse;
+                else
+                {
+                    model = new() { CorreoElectronico = recuperacion.CorreoElectronico };
+                }
+            }
+        }
+    }
+
+    public async Task OnValidSubmit()
+    {
+        mensaje = "Validando ingreso ...";
+        IsSubmit = true;
+
+        mensaje = "";
+        (string mensajeResponse, bool resultado) = await Service.ResetPasswordAsync(model);
+        if (resultado)
+        {
+            passwordRestablecido = true;
+        }
+        else
+        {
+            mensaje = mensajeResponse;
+        }
+        IsSubmit = false;
+    }
+
+}

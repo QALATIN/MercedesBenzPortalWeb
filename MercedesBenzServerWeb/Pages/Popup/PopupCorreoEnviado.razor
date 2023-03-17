@@ -1,0 +1,28 @@
+﻿<div class="mbz-modal-container">
+    <div class="mbz-modal" style="height: 280px;">
+        <div class="mbz-modal-header" style="height: 80px;">
+            <a class="mbz-modal-close" href="javascript: void(0);" @onclick="ModalCancel">
+                <img src="../image/Cerrar.png" />
+            </a>
+        </div>
+
+        <div class="mbz-modal-content-mail">
+            <div class="d-flex">
+                <div class="mbz-edi-w-100p pt-3" style="text-align: center;">
+                    <span class="mbz-font-STextOffice-25 mbz-text-secondary">Se ha enviado un link <span class="mbz-text-primary">a tu correo</span> donde recuperarás tu contraseña, revisa tu bandeja de entrada</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Texto { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+}

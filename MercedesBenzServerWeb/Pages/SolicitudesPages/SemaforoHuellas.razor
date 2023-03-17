@@ -1,0 +1,383 @@
+﻿<div id="idSemaforoHuellas" style="padding: 20px;">
+
+    <div class="">
+        <div class="mbz-text-primary" style="padding:10px 40px 0px 40px;">
+            <span class="mbz-font-STextOffice-20" style="font-size: 20px;">Mano izquierda</span>
+        </div>
+        <div class="" style="padding: 2px 40px;">
+            <table class="mbz-tb-huellas" style="width: 100%;">
+                <tbody>
+                    <tr style="">
+                        <td style="width: 20%;">
+                            @if (manoIzquierdaPulgar >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoIzquierdaPulgar].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F;" />
+
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoIzquierdaIndice >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoIzquierdaIndice].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F; " />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoIzquierdaMedio >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoIzquierdaMedio].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F; " />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoIzquierdaAnular >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoIzquierdaAnular].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F; " />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoIzquierdaMenique >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoIzquierdaMenique].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F; " />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                    <tr style="">
+                        <td style="">
+                            Pulgar<br />@manoIzquierdaPulgarEstatus
+                        </td>
+                        <td style="">
+                            Índice<br />@manoIzquierdaIndiceEstatus
+                        </td>
+                        <td style="">
+                            Medio<br />@manoIzquierdaMedioEstatus
+                        </td>
+                        <td style="">
+                            Anular<br />@manoIzquierdaAnularEstatus
+                        </td>
+                        <td style="">
+                            Meñique<br />@manoIzquierdaMeniqueEstatus
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="border-bottom: 1px solid #7F7F7F; width: 100%; padding-top: 4px;"></div>
+        <div class="mbz-text-primary" style="padding:10px 40px 0px 40px;">
+            <span class="mbz-font-STextOffice-20" style="font-size: 20px;">Mano derecha</span>
+        </div>
+        <div class="" style="padding: 2px 40px;">
+            <table class="mbz-tb-huellas" style="width: 100%;">
+                <tbody>
+                    <tr style="">
+                        <td style="width: 20%;">
+                            @if (manoDerechaPulgar >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoDerechaPulgar].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F;" />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoDerechaIndice >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoDerechaIndice].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F;" />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoDerechaMedio >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoDerechaMedio].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F;" />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoDerechaAnular >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoDerechaAnular].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F;" />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                        <td style="width: 20%;">
+                            @if (manoDerechaMenique >= 0)
+                            {
+                                <img src="data:image/jpg;base64,@Convert.ToBase64String(Model.Huellas[manoDerechaMenique].Imagen)" style="max-width: 100px; max-height: 130px; border: 1px solid #7F7F7F;" />
+                            }
+                            else
+                            {
+                                <div style="width: 100%; padding: 0px 30px">
+                                    <div style="width: 100px; height: 124px; border: 1px solid #7F7F7F; padding: 24px; ">
+                                        <img src="../image/Huella.png" style="" />
+                                    </div>
+                                </div>
+                            }
+                        </td>
+                    </tr>
+                    <tr style="">
+                        <td style="">
+                            Pulgar<br />@manoDerechaPulgarEstatus
+                        </td>
+                        <td style="">
+                            Índice<br />@manoDerechaIndiceEstatus
+                        </td>
+                        <td style="">
+                            Medio<br />@manoDerechaMedioEstatus
+                        </td>
+                        <td style="">
+                            Anular<br />@manoDerechaAnularEstatus
+                        </td>
+                        <td style="">
+                            Meñique<br />@manoDerechaMeniqueEstatus
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="border-bottom: 1px solid #7F7F7F; width: 100%; padding-top: 4px;"></div>
+
+        <div class="d-flex @colorClase" style="padding: 10px 40px 8px 40px; height: 74px;">
+            <div style="align-self: center;">
+                @if (!string.IsNullOrEmpty(Model.Resultado.Mensaje))
+                {
+                    <img src="@iconoMostrar" style="max-width: 56px; max-height: 56px;" />
+                }
+            </div>
+            <div style="align-self: center; padding-left: 20px;">
+                <span class="mbz-font-STextOffice-20" style="font-size: 20px;">@(string.IsNullOrEmpty(Model.Resultado.Mensaje) ? "Validación de huellas pendiente" : Model.Resultado.Mensaje)</span>
+            </div>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.Resultado.Mensaje))
+        {
+            @if (Model.HuellasCoincidentes != null)
+            {
+                <div class="" style="padding: 2px 40px;">
+                    <table class="table table-bordered table-striped table-hover mbz-tb-14">
+                        <thead>
+                            <tr>
+                                <th style="width: 104px;">Fotografía</th>
+                                <th style="width: 120px;">Afis</th>
+                                <th style="width: 130px;">Número de folio</th>
+                                <th style="">Nombre</th>
+                                <th style="width: 100px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.HuellasCoincidentes)
+                            {
+                                <tr>
+                                    <td>
+                                        @if (item.Fotografia != null)
+                                        {
+                                            <img src="data:image/jpg;base64,@Convert.ToBase64String(item.Fotografia)" style="max-width:100px; max-height:125px;" />
+                                        }
+                                        else
+                                        {
+                                            <img src="../image/nofoto.png" style="max-width: 100px; max-height: 125px; " />
+                                        }
+                                    </td>
+                                    <td style="vertical-align:middle">@item.AfisId</td>
+                                    <td style="vertical-align:middle">@item.Folio</td>
+                                    <td style="vertical-align:middle">@item.NombreCompleto</td>
+                                    <td style="vertical-align:middle">
+                                        <button type="button" class="btn mbz-btn-primary mbz-font-STextOffice-14 mbz-btn-h-28" @onclick="(() => OnAccionOk(item.SolicitanteId))">Consultar</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        }
+
+    </div>
+
+    @*<div class="pb-2">
+        <span class="mbz-font-STextOffice-B-16 mbz-text-dark">@Model.Resultado.Mensaje</span>
+    </div>*@
+
+</div>
+
+@code {
+    [Parameter] public SolicitudComparacionHuellas Model { get; set; }
+    [Parameter] public EventCallback<int> OnAccion { get; set; }
+
+    private int manoIzquierdaPulgar = -1;
+    private int manoIzquierdaIndice = -1;
+    private int manoIzquierdaMedio = -1;
+    private int manoIzquierdaAnular = -1;
+    private int manoIzquierdaMenique = -1;
+    private int manoDerechaPulgar = -1;
+    private int manoDerechaIndice = -1;
+    private int manoDerechaMedio = -1;
+    private int manoDerechaAnular = -1;
+    private int manoDerechaMenique = -1;
+    private string manoIzquierdaPulgarEstatus = "Sin información";
+    private string manoIzquierdaIndiceEstatus = "Sin información";
+    private string manoIzquierdaMedioEstatus = "Sin información";
+    private string manoIzquierdaAnularEstatus = "Sin información";
+    private string manoIzquierdaMeniqueEstatus = "Sin información";
+    private string manoDerechaPulgarEstatus = "Sin información";
+    private string manoDerechaIndiceEstatus = "Sin información";
+    private string manoDerechaMedioEstatus = "Sin información";
+    private string manoDerechaAnularEstatus = "Sin información";
+    private string manoDerechaMeniqueEstatus = "Sin información";
+    private string colorClase = "mbz-text-gray";
+    private string iconoMostrar = "../image/Exclamacion.png";
+
+    protected override void OnParametersSet()
+    {
+
+        int indice = 0;
+        foreach (var item in Model.Huellas)
+        {
+
+            switch (item.DedoIndiceId)
+            {
+                case 1:
+                    if (item.Imagen != null)
+                        manoDerechaPulgar = indice;
+                    manoDerechaPulgarEstatus = item.DedoEstatusNombre;
+                    break;
+                case 2:
+                    if (item.Imagen != null)
+                        manoDerechaIndice = indice;
+                    manoDerechaIndiceEstatus = item.DedoEstatusNombre;
+                    break;
+                case 3:
+                    if (item.Imagen != null)
+                        manoDerechaMedio = indice;
+                    manoDerechaMedioEstatus = item.DedoEstatusNombre;
+                    break;
+                case 4:
+                    if (item.Imagen != null)
+                        manoDerechaAnular = indice;
+                    manoDerechaAnularEstatus = item.DedoEstatusNombre;
+                    break;
+                case 5:
+                    if (item.Imagen != null)
+                        manoDerechaMenique = indice;
+                    manoDerechaMeniqueEstatus = item.DedoEstatusNombre;
+                    break;
+                case 6:
+                    if (item.Imagen != null)
+                        manoIzquierdaPulgar = indice;
+                    manoIzquierdaPulgarEstatus = item.DedoEstatusNombre;
+                    break;
+                case 7:
+                    if (item.Imagen != null)
+                        manoIzquierdaIndice = indice;
+                    manoIzquierdaIndiceEstatus = item.DedoEstatusNombre;
+                    break;
+                case 8:
+                    if (item.Imagen != null)
+                        manoIzquierdaMedio = indice;
+                    manoIzquierdaMedioEstatus = item.DedoEstatusNombre;
+                    break;
+                case 9:
+                    if (item.Imagen != null)
+                        manoIzquierdaAnular = indice;
+                    manoIzquierdaAnularEstatus = item.DedoEstatusNombre;
+                    break;
+                case 10:
+                    if (item.Imagen != null)
+                        manoIzquierdaMenique = indice;
+                    manoIzquierdaMeniqueEstatus = item.DedoEstatusNombre;
+                    break;
+            }
+            indice += 1;
+        }
+        switch (Model.Resultado.Semaforo.ToUpper())
+        {
+            case "VERDE":
+                colorClase = "mbz-text-green";
+                iconoMostrar = "../image/Exito.png";
+                break;
+            case "AMARILLO":
+                colorClase = "mbz-text-yellow";
+                iconoMostrar = "../image/Exclamacion.png";
+                break;
+            case "ROJO":
+                colorClase = "mbz-text-red";
+                iconoMostrar = "../image/Exclamacion.png";
+                break;
+            default:
+                colorClase = "mbz-text-gray";
+                iconoMostrar = "";
+                break;
+        }
+
+    }
+
+    private Task OnAccionOk(int Id)
+    {
+        return OnAccion.InvokeAsync(Id);
+    }
+
+}

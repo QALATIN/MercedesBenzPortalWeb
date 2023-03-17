@@ -1,0 +1,74 @@
+﻿<div id="idSemaforoCurp" style="padding: 20px;">
+    <div class="pb-2">
+        <span class="mbz-font-STextOffice-B-16 mbz-text-dark">@Model.mensaje</span>
+    </div>
+
+    <div class="mbz-card-ficha-carnet mb-3" style="padding: 20px;">
+        <table class="mbz-font-STextOffice-14 mbz-text-dark" style="width: 100%;">
+            <tbody>
+                <tr style="vertical-align: baseline;">
+                    <td style="width: 33%; padding: 10px 40px;">
+                        <span class="mbz-font-STextOffice-B-14">Nombre:</span>
+                        <br>
+                        <span>@Model.datos_validacion.nombre</span>
+                        <br><br>
+                        <span class="mbz-font-STextOffice-B-14">Apellido paterno: </span>
+                        <br>
+                        <span>@Model.datos_validacion.paterno</span>
+                        <br><br>
+                        <span class="mbz-font-STextOffice-B-14">Apellido materno:</span>
+                        <br>
+                        <span>@Model.datos_validacion.materno</span>
+                        <br><br>
+                        <span class="mbz-font-STextOffice-B-14">Fecha de nacimiento:</span>
+                        <br>
+                        <span>@Model.datos_validacion.fecha_nacimiento</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Curp:</span>
+                        <br>
+                        <span>@Model.datos_validacion.curp</span>
+                    </td>
+                    <td style="width: 33%; padding: 10px 40px;">
+                        <span class="mbz-font-STextOffice-B-14">Sexo:</span>
+                        <br>
+                        <span>@Model.datos_validacion.sexo</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Estado de nacimiento: </span>
+                        <br>
+                        <span>@Model.datos_validacion.estado_nacimiento</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Pais de nacimiento:</span>
+                        <br>
+                        <span>@Model.datos_validacion.pais_nacimiento</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Clave pais de nacimiento:</span>
+                        <br>
+                        <span>@Model.datos_validacion.clave_pais_nacimiento</span>
+                    </td>
+                    <td style="width: 33%; padding: 10px 40px;">
+                        <span class="mbz-font-STextOffice-B-14">Entidad de registro:</span>
+                        <br>
+                        <span>@Model.datos_validacion.entidad_registro</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Municipio de registro: </span>
+                        <br>
+                        <span>@Model.datos_validacion.municipio_registro</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Año de registro:</span>
+                        <br>
+                        <span>@Model.datos_validacion.anio_registro</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Número de acta:</span>
+                        <br>
+                        <span>@Model.datos_validacion.numero_acta</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public CurpResponse Model { get; set; }
+}

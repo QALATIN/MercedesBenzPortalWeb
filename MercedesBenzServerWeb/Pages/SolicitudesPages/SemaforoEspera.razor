@@ -1,0 +1,18 @@
+﻿<div class="mbz-card-ficha-sem">
+    <div class="d-flex" style="height: 66px;">
+        <div class="mbz-ficha-sem-1">
+            <SemaforoColor NombreSemaforo="@Semaforo" Estilo="mbz-span-sem-36"></SemaforoColor>
+        </div>
+        <div class="mbz-ficha-sem-2">
+            <span class="mbz-font-STextOffice-B-16 mbz-text-dark">@Texto</span>
+        </div>
+        <div class="mbz-ficha-sem-3">
+            <CircleFade Center="true" Size="20px" Color="#232F3B"></CircleFade>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Semaforo { get; set; }
+    [Parameter] public string Texto { get; set; }
+}

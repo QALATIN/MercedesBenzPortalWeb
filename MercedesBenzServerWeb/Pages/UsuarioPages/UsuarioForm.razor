@@ -1,0 +1,206 @@
+﻿@inject Services.ICatalogoService ServiceCatalogo;
+@inject Services.IUsuarioService ServiceUsuario;
+@inject Services.IRecuperacionService ServiceRecuperacion;
+@using System.Linq;
+
+<div class="mbz-row-center">
+    <div class="mbz-card-titulo-1 ">
+        <span class="mbz-font-ATitleCondOffice-40">@Title</span>
+    </div>
+</div>
+
+<div class="mbz-card-edicion">
+    <EditForm Model="@usuario" OnValidSubmit="@OnValidSubmit">
+        <DataAnnotationsValidator />
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Nombre(s)</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Nombre" @bind-Value="@usuario.Nombre" />
+                <ValidationMessage For="@(() => usuario.Nombre)" />
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Apellido Paterno</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Apellido paterno" @bind-Value="@usuario.ApellidoPaterno" />
+                <ValidationMessage For="@(() => usuario.ApellidoPaterno)" />
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Apellido Materno</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Apellido materno" @bind-Value="@usuario.ApellidoMaterno" />
+                <ValidationMessage For="@(() => usuario.ApellidoMaterno)" />
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Fecha de nacimiento</label>
+                <InputDate class="form-control mbz-input-edi" placeholder="Fecha de nacimiento" @bind-Value="@usuario.FechaNacimiento" />
+                <ValidationMessage For="@(() => usuario.FechaNacimiento)" />
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Usuario</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Usuario" @bind-Value="@usuario.NombreUsuario" />
+                <ValidationMessage For="@(() => usuario.NombreUsuario)" />
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Correo electrónico</label>
+                <InputText class="form-control mbz-input-edi" placeholder="Correo eléctronico" @bind-Value="@usuario.CorreoElectronico" />
+                <ValidationMessage For="@(() => usuario.CorreoElectronico)" />
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Perfil</label>
+                <InputSelect class="form-control mbz-input-edi" @bind-Value="@usuario.PerfilId">
+                    @if (perfiles != null)
+                    {
+                        @foreach (var item in perfiles)
+                        {
+                            <option value="@item.PerfilId">@item.NombrePerfil</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => usuario.PerfilId)" />
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <label class="mbz-label-edi">Agencia</label>
+                <InputSelect class="form-control mbz-input-edi" @bind-Value="@usuario.AgenciaId">
+                    @if (agencias != null)
+                    {
+                        @foreach (var item in agencias)
+                        {
+                            <option value="@item.AgenciaId">@item.NombreAgencia</option>
+                        }
+                    }
+                </InputSelect>
+                <ValidationMessage For="@(() => usuario.AgenciaId)" />
+            </div>
+            <div class="mbz-edi-w-1d3">
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="mbz-edi-w-1d3">
+            </div>
+            <div class="mbz-edi-w-1d3">
+                @if (usuarioId <= 0)
+                {
+                    <button type="reset" class="btn mbz-btn-cancelar mbz-font-STextOffice-18 mbz-text-primary" @onclick="@OnLimpiar">Limpiar</button>
+                }
+            </div>
+            <div class="mbz-edi-w-1d3">
+                <button type="submit" class="btn mbz-btn-primary mbz-font-STextOffice-18">@ButtonText</button>
+            </div>
+        </div>
+
+    </EditForm>
+
+    @if (!string.IsNullOrEmpty(mensaje))
+    {
+        <div class="container alert-info mbz-font-STextOffice-16">@mensaje</div>
+    }
+    @if (popupOpen)
+    {
+        <MercedesBenzServerWeb.Pages.Popup.PopupNotificacion Texto=@mensajePopup OnClose="@OnPopupClose" CssAltoModal="height: 430px;"></MercedesBenzServerWeb.Pages.Popup.PopupNotificacion>
+    }
+</div>
+
+
+@code {
+    [Parameter]
+    public string UsuarioId { get; set; } = "0";
+    [Parameter]
+    public string Title { get; set; } = "Usuario";
+    [Parameter]
+    public string ButtonText { get; set; } = "Guardar";
+
+    int usuarioId = -1;
+    private TipoAccion tipoAccion { get; set; }
+
+    Usuario usuario = new Usuario();
+
+    IEnumerable<Perfil> perfiles = null;
+    IEnumerable<AgenciaSeleccion> agencias = null;
+
+    private string mensaje = "";
+    private string mensajePopup = "";
+
+    private bool popupOpen { get; set; } = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        (string mensajePerfiles, IEnumerable<Perfil> perfilesResponse) = await ServiceCatalogo.GetAllPerfilAsync();
+        if (perfilesResponse != null)
+        {
+            perfiles = perfilesResponse;
+            (string mensajeAgencias, IEnumerable<AgenciaSeleccion> agenciasResponse) = await ServiceCatalogo.GetAllAgenciaAsync();
+            if (agenciasResponse != null)
+            {
+                agencias = agenciasResponse;
+                agencias = agencias.Concat(new[] { new AgenciaSeleccion() { AgenciaId = 0, NombreAgencia = "-" } });
+                agencias = agencias.OrderBy(x => x.NombreAgencia);
+                usuarioId = int.Parse(UsuarioId);
+                usuario.FechaNacimiento = new(DateTime.Now.Year - 30, 1, 1);
+                if (usuarioId > 0)
+                {
+                    (string mensajeUsuario, Usuario usuarioResponse) = await ServiceUsuario.GetByIdAsync(usuarioId);
+                    if (usuarioResponse != null)
+                        usuario = usuarioResponse;
+                    else
+                        mensaje = mensajeUsuario;
+                }
+            }
+            else
+                mensaje = mensajeAgencias;
+        }
+        else
+            mensaje = mensajePerfiles;
+    }
+
+    public async Task OnValidSubmit()
+    {
+        (string mensajeResponse, Usuario usuarioResponse) response;
+        if (usuario.UsuarioId == 0)
+        {
+            tipoAccion = TipoAccion.Agregar;
+            response = await ServiceUsuario.AddAsync(usuario);
+            if(string.IsNullOrEmpty(response.mensajeResponse))
+            {
+                mensajePopup = "Usuario agregado con éxito";
+
+                string correo = usuario.CorreoElectronico;
+                (string mensajeCorreo, bool correoEnviado) = await ServiceRecuperacion.SendCorreoAsync(new EmailRequest { CorreoElectronico = correo });
+                if (!string.IsNullOrEmpty(mensajeCorreo))
+                    mensaje = mensajeCorreo;
+                else
+                {
+                    mensajePopup += "<br />Se ha enviado un link al correo registrado";
+                }
+            }
+        }
+        else
+        {
+            tipoAccion = TipoAccion.Editar;
+            response = await ServiceUsuario.UpdateAsync(usuario);
+            mensajePopup = "Usuario actualizado con éxito";
+        }
+        if (response.usuarioResponse != null)
+            popupOpen = true;
+        else
+            mensaje = response.mensajeResponse;
+    }
+
+    private void OnLimpiar()
+    {
+        usuario = new Usuario();
+    }
+
+    private void OnPopupClose(bool resultado)
+    {
+        if (tipoAccion == TipoAccion.Agregar)
+            NavigationManager.NavigateTo("/usuarioAdmin");
+        else
+            NavigationManager.NavigateTo("/usuarioLista");
+    }
+
+}

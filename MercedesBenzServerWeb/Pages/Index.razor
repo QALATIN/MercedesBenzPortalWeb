@@ -1,0 +1,70 @@
+﻿@page "/index"
+@inject Services.IAutenticacionService ServiceAutenticacion;
+
+<div class="mbz-row-center">
+    <div class="mbz-card-titulo-1 ">
+        <span class="mbz-font-ATitleCondOffice-48">Bienvenido a Mercedes Benz Financial Services </span>
+    </div>
+</div>
+
+<AuthorizeView Roles="Administrador, Análista">
+    <div class="mbz-row-center">
+        <div class="mbz-card-home">
+            <a href="solicitudAdmin">
+                <div class="mbz-card-home-opcion">
+                    <div class="p-3"></div>
+                    <div>
+                        <img src="../image/solicitudes/SolicitudesNuevas.png" />
+                    </div>
+                    <div class=" mbz-text-dark p-3">
+                        <span>Solicitudes </span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mbz-card-home">
+            <a href="reporteLista">
+                <div class="mbz-card-home-opcion">
+                    <div class="p-3"></div>
+                    <div>
+                        <img src="../image/Reportes.png" />
+                    </div>
+                    <div class="mbz-text-dark p-3">
+                        <span>Reportes</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</AuthorizeView>
+
+<AuthorizeView Roles="Administrador">
+    <div class="mbz-row-center">
+        <div class="mbz-card-home">
+            <a href="usuarioAdmin">
+                <div class="mbz-card-home-opcion">
+                    <div class="p-3"></div>
+                    <div>
+                        <img src="../image/Usuarios.png" />
+                    </div>
+                    <div class="mbz-text-dark p-3">
+                        <span>Administración de usuarios</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="mbz-card-home">
+            <a href="agenciaAdmin">
+                <div class="mbz-card-home-opcion">
+                    <div class="p-3"></div>
+                    <div>
+                        <img src="../image/Agencias.png" />
+                    </div>
+                    <div class="mbz-text-dark p-3">
+                        <span>Administración de agencias</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</AuthorizeView>

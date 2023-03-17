@@ -1,0 +1,72 @@
+﻿@inject Services.IRecuperacionService Service;
+
+<div class="mbz-modal-container">
+    <div class="mbz-modal" style="height:420px;">
+        <div class="mbz-modal-header" style="height: 80px;">
+            <a class="mbz-modal-close" href="javascript: void(0);" @onclick="ModalCancel">
+                <img src="../image/Cerrar.png" />
+            </a>
+        </div>
+
+        <div class="mbz-modal-content-mail">
+            <EditForm Model="@model" OnValidSubmit="@OnValidSubmit">
+                <DataAnnotationsValidator />
+                <div class="d-flex">
+                    <div class="mbz-edi-w-100p">
+                        <span class="mbz-font-STextOffice-25 mbz-text-secondary">@Texto</span>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="mbz-edi-w-100p" style="padding: 10px 20px;">
+                        <InputText class="form-control mbz-input-edi" placeholder="Correo eléctronico" @bind-Value="@model.CorreoElectronico" style="height: 56px;" />
+                        <ValidationMessage For="@(() => model.CorreoElectronico)" />
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="mbz-edi-w-100p" style="padding: 10px 20px;">
+                        <button type="submit" class="btn mbz-btn-primary mbz-font-STextOffice-18" style="height: 56px;">Enviar</button>
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(mensaje))
+                {
+                    <div class="d-flex">
+                        <div class="mbz-edi-w-100p">
+                            <span class="container alert-info mbz-font-STextOffice-16 p-1">@mensaje</span>
+                        </div>
+                    </div>
+                }
+            </EditForm>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Texto { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+    private EmailRequest model = new();
+    private string mensaje = String.Empty;
+
+    public async Task OnValidSubmit()
+    {
+        mensaje = "";
+        (string mensajeResponse, bool correoEnviado) = await Service.SendCorreoAsync(model);
+        if (!string.IsNullOrEmpty(mensajeResponse))
+            mensaje = mensajeResponse;
+        else
+        {
+            await ModalOk();
+        }
+    }
+
+    private Task ModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task ModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+
+
+}

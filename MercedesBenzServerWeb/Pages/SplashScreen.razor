@@ -1,0 +1,19 @@
+﻿@page "/"
+@layout LoginLayout
+
+<div class="mbz-card-center" >
+    <img src="../image/portada.jpg" />
+</div>
+
+@code {
+
+    protected async override Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Task.Delay(2000);
+        if (firstRender)
+        {
+            NavigationManager.NavigateTo("/login");
+        }
+    }
+
+}

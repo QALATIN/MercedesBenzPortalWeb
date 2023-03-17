@@ -1,0 +1,91 @@
+﻿<div class="d-flex">
+    @foreach (var item in Solicitantes)
+    {
+        <div class="mbz-card-solicitud-tarjeta">
+            <div class="mbz-card-solicitud-tarjeta-item">
+                <div class="d-flex pl-2 pr-2" style="border-bottom: 1px solid #707070;">
+                    <div class="mbz-w-55p"><span class="">@item.TipoCliente</span></div>
+                    <div class="mbz-w-45p @colorEstatus"><span class="">@item.Estatus</span></div>
+                </div>
+                <div class="d-flex pl-2 pr-2" style="border-bottom: 1px solid #707070;">
+                    <div class="mbz-w-55p">
+                        <span class="">Fecha de solicitud:</span>
+                        <span class="">@item.FechaEnvio.ToString("dd/MM/yyyy")</span>
+                    </div>
+                    <div class="mbz-w-45p">
+                        <span class="">Folio:</span>
+                        <span class="">@item.Folio</span>
+                    </div>
+                </div>
+                <table>
+                    <tbody>
+                        <tr style="vertical-align: top;">
+                            <td class="" style="width: 162px; padding: 18px 0px;text-align:center" rowspan="4">
+                                <div style="">
+                                    @if (item.Imagen == null)
+                                    {
+                                        <img src="../image/nofoto.png" style="width: 110px;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="data:image/jpg;base64,@Convert.ToBase64String(item.Imagen)" style="max-width:150px; max-height:190px;" />
+                                    }
+                                </div>
+                            </td>
+                            <td class="" style="width: 326px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="height:40px"></td>
+                        </tr>
+                        <tr style="vertical-align: bottom;">
+                            <td style="padding-right:20px;">
+                                <span class="mbz-font-STextOffice-B-24">@item.SolicitanteNombre</span>
+                                <br />
+                                <span class="mbz-font-STextOffice-B-24">@item.SolicitanteApellidoPaterno @item.SolicitanteApellidoMaterno</span>
+                                <br />
+                                <span class="">Fecha de nacimiento:</span>
+                                <span class="">@item.FechaNacimiento?.ToString("dd/MM/yyyy")</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding-right: 20px; padding-bottom: 10px;">
+                                <button type="button" class="btn mbz-btn-primary mbz-font-STextOffice-18" @onclick="(() => OnAccion(item.SolicitanteId))">Ver</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public List<SolicitanteEstatus> Solicitantes { get; set; }
+    [Parameter] public SolicitudEstatus Estatus { get; set; }
+
+    private string colorEstatus { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        switch (Estatus)
+        {
+            case SolicitudEstatus.Nuevas:
+                colorEstatus = "mbz-text-green";
+                break;
+            case SolicitudEstatus.Proceso:
+                colorEstatus = "mbz-text-green";
+                break;
+            case SolicitudEstatus.Finalizadas:
+                colorEstatus = "mbz-text-green";
+                break;
+        }
+    }
+
+    private void OnAccion(int id)
+    {
+        string urlOrigen = $"solicitudes/{(int)Estatus}";
+        NavigationManager.NavigateTo($"/solicitudDetalle/{id}/{urlOrigen}");
+    }
+
+}

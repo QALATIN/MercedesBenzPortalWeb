@@ -1,0 +1,110 @@
+﻿@using BlazorDateRangePicker
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Prueba</h3>
+
+<div class="col-3">
+    <DateRangePicker @ref="Picker" Culture="@(System.Globalization.CultureInfo.GetCultureInfo("es-MX"))" DateFormat="dd MMMM yyyy" AutoApply="true"
+                     OnOpened="Opened"
+                     OnClosed="Closed"
+                     MinDate="MinDate" MaxDate="MaxDate">
+        <PickerTemplate>
+            <div id="@context.Id" @onclick="context.Toggle" style="background: #fff; cursor: pointer; padding: 5px 10px; width: 350px; border: 1px solid #ccc;">
+                <i class="oi oi-calendar"></i>&nbsp;
+                <input id="Id0" type="text" value="@context.FormattedRange" placeholder="Rango de fechas" style="border:0px;width:85%"
+                       @onchange="((ChangeEventArgs __e) => OnRangeChange(__e.Value.ToString().Trim()))" />
+                <i class="oi oi-chevron-bottom float-right"></i>
+            </div>
+        </PickerTemplate>
+        <ButtonsTemplate>
+            <button class="cancelBtn btn btn-sm btn-default" @onclick="@context.ClickCancel" type="button">
+                Cancel
+            </button>
+            <button class="cancelBtn btn btn-sm btn-default" @onclick="@(e => ResetClick(e, context))" type="button">
+                Reset
+            </button>
+            <button class="applyBtn btn btn-sm btn-primary" @onclick="@context.ClickApply" disabled="@(context.TStartDate == null || context.TEndDate == null)" type="button">
+                Apply
+            </button>
+        </ButtonsTemplate>
+    </DateRangePicker>
+</div>
+
+@code{
+
+    DateRangePicker Picker;
+
+    private bool FechaCapturada { get; set; } = false;
+    private bool ValidarFecha { get; set; } = false;
+
+    DateTime MinDate { get; set; } = new DateTime(2022, 01, 1);
+    DateTime MaxDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+
+    DateTimeOffset? StartDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+    DateTimeOffset? EndDate { get; set; } = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+
+    protected async override Task OnInitializedAsync()
+    {
+        //var authentication2 = await authenticationState;
+
+        var authentication = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        //var identity = authentication.User.Identity;
+        //var claims = authentication.User.Claims;
+
+        //string nombre = identity.Name;
+        //string role = "";
+        //var claimRole = claims.FirstOrDefault(x => x.Type.Contains("role"));
+        //if (claimRole != null)
+        //    role = claimRole.Value;
+
+    }
+
+    public void Opened()
+    {
+        ValidarFecha = true;
+    }
+
+    public void Closed()
+    {
+        if (ValidarFecha)
+        {
+            if (!string.IsNullOrEmpty(Picker.FormattedRange))
+                FechaCapturada = true;
+        }
+    }
+
+
+    public void OnRangeSelect(DateRange range)
+    {
+        var fechaInicio = range.Start;
+        var fechaFinal = range.End;
+        //var calendar = Picker.RightCalendar.Calendar;
+        //Picker.TEndDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1).AddMonths(1).AddDays(-1);
+    }
+
+    void OnRangeChange(string value)
+    {
+        FechaCapturada = false;
+        if (value == Picker.FormattedRange)
+            FechaCapturada = true;
+        ValidarFecha = false;
+    }
+
+    void ResetClick(MouseEventArgs e, DateRangePicker picker)
+    {
+        StartDate = null;
+        EndDate = null;
+        picker.Close();
+        picker.OnRangeSelect.InvokeAsync(new DateRange());
+    }
+
+    protected override void OnInitialized()
+    {
+        //StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+        //EndDate = DateTime.Now;   @bind-EndDate="EndDate"
+
+        //Picker.AutoApply = true;
+        //Picker.DateFormat = "dd MMMM yyyy";
+    }
+
+}

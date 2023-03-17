@@ -1,0 +1,52 @@
+﻿<div id="idSemaforoIne" style="padding: 20px;">
+
+    <div class="pb-2">
+        <span class="mbz-font-STextOffice-B-16 mbz-text-dark">@Model.mensaje</span>
+    </div>
+
+    <table class="table table-sm table-bordered table-striped table-hover mbz-tb-14">
+        <thead>
+            <tr>
+                <th style="width: 20%; "></th>
+                <th style="width: 30%; ">Identificación</th>
+                <th style="width: 30%; ">Lista nominal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Clave de elector:</td>
+                <td>@ModelCap.ClaveElector</td>
+                <td>@Model.datos_validacion.IneClaveDeElector</td>
+            </tr>
+            <tr>
+                <td>Número de emisión:</td>
+                <td>@ModelCap.NumeroEmision</td>
+                <td>@Model.datos_validacion.IneNumeroDeEmision</td>
+            </tr>
+            <tr>
+                <td>OCR:</td>
+                <td>@ModelCap.Ocr</td>
+                <td>@Model.datos_validacion.IneOcr</td>
+            </tr>
+            <tr>
+                <td>CIC:</td>
+                <td>@ModelCap.Cic</td>
+                <td>@Model.datos_validacion.IneCic</td>
+            </tr>
+            <tr>
+                <td>Identificador ciudadano</td>
+                <td>@ModelCap.IdentificadorCiudadano</td>
+                <td>@Model.datos_validacion.IneIdentificadorCiudadano</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="">
+        <span class="mbz-font-STextOffice-14 mbz-text-dark">@Model.datos_validacion.Respuesta</span>
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public SolicitudIne ModelCap { get; set; }
+    [Parameter] public IneResponse Model { get; set; }
+}

@@ -1,0 +1,34 @@
+﻿<div id="idSemaforoListaAml" style="padding: 20px;">
+    <div class="pb-2">
+        <span class="mbz-font-STextOffice-B-16 mbz-text-dark">@Model.mensaje</span>
+    </div>
+
+    <div class="mbz-card-ficha-carnet mb-3" style="padding: 20px;">
+        <table class="mbz-font-STextOffice-14 mbz-text-dark" style="width: 100%;">
+            <tbody>
+                <tr style="vertical-align: baseline;">
+                    <td style="width: 33%; padding: 10px 40px;">
+                        <span class="mbz-font-STextOffice-B-14">Dato usado rfc:</span>
+                        <br>
+                        <span>@Model.datos_validacion.dato_usado_rfc</span>
+                        <br><br>
+                            <span class="mbz-font-STextOffice-B-14">Datos usado curp: </span>
+                        <br>
+                        <span>@Model.datos_validacion.dato_usado_curp</span>
+                        <br><br>
+                        <span class="mbz-font-STextOffice-B-14">Dato usado nombre:</span>
+                        <br>
+                        <span>@Model.datos_validacion.dato_usado_nombre</span>
+                    </td>
+                    <td style="width: 33%; padding: 10px 40px;"></td>
+                    <td style="width: 33%; padding: 10px 40px;"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public ListaResponse Model { get; set; }
+}

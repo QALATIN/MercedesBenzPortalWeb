@@ -1,0 +1,8 @@
+﻿@page "/usuarioEditar/{id}"
+
+<UsuarioForm Title="Editar Usuario" ButtonText="Guardar" UsuarioId="@Id" />
+
+@code {
+    [Parameter]
+    public string Id { get; set; }
+}

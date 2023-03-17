@@ -1,0 +1,39 @@
+﻿
+<div class="mbz-modal-container">
+    <div class="mbz-modal">
+        <div class="mbz-modal-header">
+            <a class="mbz-modal-close" href="javascript: void(0);" @onclick="@OnModalCancel">
+                <img src="../image/Cerrar.png" />
+            </a>
+        </div>
+
+        <div class="mbz-modal-content-pregunta">
+            <span class="mbz-font-STextOffice-25 mbz-text-secondary">@Texto</span>
+        </div>
+
+        <div class="mbz-modal-footer">
+            <div class="mbz-w-btn-pregunta">
+                <button type="button" class="btn mbz-btn-cancelar mbz-font-STextOffice-18 mbz-text-primary" @onclick="@OnModalCancel">No</button>
+            </div>
+            <div class="mbz-w-btn-pregunta">
+                <button type="button" class="btn mbz-btn-primary mbz-font-STextOffice-18" @onclick=@OnModalOk>Si</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Texto { get; set; }
+    [Parameter] public EventCallback<bool> OnClose { get; set; }
+
+    private Task OnModalCancel()
+    {
+        return OnClose.InvokeAsync(false);
+    }
+
+    private Task OnModalOk()
+    {
+        return OnClose.InvokeAsync(true);
+    }
+
+}

@@ -1,0 +1,56 @@
+﻿
+<div class="mbz-modal-container">
+    <div class="mbz-modal" style="height: 480px;">
+        <div class="mbz-modal-header">
+            <a class="mbz-modal-close" href="javascript: void(0);" @onclick="@OnModalCancel">
+                <img src="../image/Cerrar.png" />
+            </a>
+        </div>
+
+        <div class="mbz-modal-content-coment">
+
+            <div class="mbz-row-center">
+                <span class="mbz-font-STextOffice-25">@Texto</span>
+            </div>
+            <div class="mbz-row-center" style="padding: 20px 0px;">
+                <textarea class="mbz-font-STextOffice-B-16 mbz-text-secondary" @bind=@comentario placeholder="Escriba aqui" style="border: 1px solid #707070; height: 158px; width: 100%;"></textarea>
+            </div>
+
+            @if (!string.IsNullOrEmpty(mensaje))
+            {
+                <div class="validation-message mbz-font-STextOffice-16 pb-2">@mensaje</div>
+            }
+
+        </div>
+
+        <div class="mbz-modal-footer" style="padding: 0px 56px; justify-content: right; ">
+            <div class="mbz-w-btn-coment">
+                <button type="button" class="btn mbz-btn-primary mbz-font-STextOffice-18" @onclick=@OnModalOk>Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Texto { get; set; }
+    [Parameter] public EventCallback<string> OnClose { get; set; }
+    private string mensaje = String.Empty;
+
+    private string comentario = "";
+
+    private Task OnModalCancel()
+    {
+        return OnClose.InvokeAsync("");
+    }
+
+    private Task OnModalOk()
+    {
+        if (string.IsNullOrEmpty(comentario))
+        {
+            mensaje = "El Comentario es obligatorio";
+            return Task.FromResult("");
+        } else
+            return OnClose.InvokeAsync(comentario);
+    }
+
+}

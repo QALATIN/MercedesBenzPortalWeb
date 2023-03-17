@@ -1,0 +1,29 @@
+﻿@if (Data != null)
+{
+    @for (int indice = 0; indice < totalSolicitudes; indice += itemLinea)
+    {
+        <SolicitudesEstatusTarjeta Solicitantes="@FiltrarItems(indice)" Estatus="@Estatus"></SolicitudesEstatusTarjeta>
+    }
+}
+
+@code {
+
+    [Parameter] public object Data { get; set; }
+    [Parameter] public SolicitudEstatus Estatus { get; set; }
+
+    private int itemLinea = 2;
+    private int totalSolicitudes = 0;
+    IEnumerable<SolicitanteEstatus> Solicitantes = null;
+
+    protected override void OnParametersSet()
+    {
+        Solicitantes = JsonConvert.DeserializeObject<IEnumerable<SolicitanteEstatus>>(Data.ToString());
+        totalSolicitudes = Solicitantes.Count();
+    }
+
+    private List<SolicitanteEstatus> FiltrarItems(int indice)
+    {
+        return Solicitantes.Skip(indice).Take(2).ToList();
+    }
+
+}

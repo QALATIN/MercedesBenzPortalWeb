@@ -1,0 +1,21 @@
+﻿<div id="idSemaforoEstado" style="padding: 20px;">
+
+    <div class="pb-2">
+        <span class="mbz-font-STextOffice-B-16 mbz-text-dark">Comentario</span>
+    </div>
+
+    <div class="mbz-card-ficha-carnet mb-3" style="padding: 20px;">
+        <table class="mbz-font-STextOffice-14 mbz-text-dark mbz-tb-14" style="width: 100%;">
+            <tbody>
+                <tr style="vertical-align: baseline;">
+                    <td style="width: 100%; padding: 10px 40px;">@Motivo</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+@code {
+    [Parameter] public string Motivo { get; set; }
+}

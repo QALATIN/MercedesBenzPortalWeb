@@ -1,0 +1,27 @@
+﻿<div class="mbz-card-ficha-sem">
+    <div class="d-flex" style="height: 66px;">
+        <div class="mbz-ficha-sem-1">
+        </div>
+        <div class="mbz-ficha-sem-22">
+            <span class="mbz-font-STextOffice-B-16 mbz-text-dark">@Texto</span>
+        </div>
+        <div class="mbz-ficha-sem-23">
+            <label class="mbz-font-STextOffice-12 mbz-text-red m-0">Error inesperado</label>
+        </div>
+        <div class="mbz-ficha-sem-3">
+            <button type="button" class="btn mbz-btn-primary mbz-btn-h-28 mbz-font-STextOffice-B-14" @onclick=@OnReintentar>Reintentar</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string Texto { get; set; }
+    [Parameter] public TipoSemaforo TipoRecarga { get; set; }
+    [Parameter] public EventCallback<TipoSemaforo> OnRecargarSemaforo { get; set; }
+
+    private Task OnReintentar()
+    {
+        return OnRecargarSemaforo.InvokeAsync(TipoRecarga);
+    }
+
+}

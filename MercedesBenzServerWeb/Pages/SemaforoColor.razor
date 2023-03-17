@@ -1,0 +1,34 @@
+﻿<span class="@nombreClase @Estilo">&nbsp;</span>
+
+@code {
+    [Parameter] public string NombreSemaforo { get; set; } = "Gris";
+    [Parameter] public string Estilo { get; set; } = "";
+    private string nombreClase = "mbz-span-sem-";
+
+    protected override void OnParametersSet()
+    {
+        if(!string.IsNullOrEmpty(NombreSemaforo))
+        {
+            nombreClase = "mbz-span-sem-";
+            switch (NombreSemaforo.ToUpper())
+            {
+                case "VERDE":
+                    nombreClase += "verde";
+                    break;
+                case "AMARILLO":
+                    nombreClase += "amarillo";
+                    break;
+                case "ROJO":
+                    nombreClase += "rojo";
+                    break;
+                case "ROJO2":
+                    nombreClase += "rojo2";
+                    break;
+                default:
+                    nombreClase += "gris";
+                    break;
+            }
+        }
+    }
+
+}
