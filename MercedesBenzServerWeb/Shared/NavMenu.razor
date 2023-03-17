@@ -1,0 +1,202 @@
+﻿@inject Services.IUsuarioService ServiceUsuario;
+
+<div class="mbz-ctr-header mbz-flx-ah-center">
+    <img src="../image/logo-estrella.png" />
+</div>
+
+<div class="">
+    <ul class="nav flex-column">
+        <li class="mbz-nav-menu">
+            <a class="mbz-font-STextOffice-B-14 mbz-text-primary" href="index">Menú</a>
+        </li>
+    </ul>
+</div>
+
+<div class="">
+    <ul class="nav flex-column">
+        <AuthorizeView Roles="Administrador, Análista">
+            <li class="mbz-nav">
+                <div class="d-flex">
+                    <a class="mbz-nav-item mbz-font-STextOffice-B-14 mbz-text-secondary" href="solicitudAdmin">
+                        <div class="mbz-opc-w-90p">
+                            <span class="">Solicitudes</span>
+                        </div>
+                    </a>
+                    <a class="mbz-font-STextOffice-B-14 mbz-text-secondary" href="javascript: void(0);" @onclick="e => collapSolicitudes = !collapSolicitudes">
+                        <div class="mbz-opc-w-10p">
+                            @if (collapSolicitudes)
+                            {
+                                <img src="../image/chevron-forward-outline.svg" style="width:20px;height:18px;" />
+                            }
+                            else
+                            {
+                                <img src="../image/chevron-down-outline.svg" style="width:20px;height:18px;" />
+                            }
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav flex-column" style="margin-left: 30px; @(!collapSolicitudes ? string.Empty: "display: none")">
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="solicitudBuscar">
+                            <span class="">Buscar</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="@($"solicitudesNuevas/{(int)@SolicitudEstatus.Nuevas}")">
+                            <span class="">Nuevas</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="@($"solicitudesProceso/{(int)@SolicitudEstatus.Proceso}")">
+                            <span class="">En proceso</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="@($"solicitudesFinalizadas/{(int)@SolicitudEstatus.Finalizadas}")">
+                            <span class="">Finalizadas</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="mbz-nav">
+                <div class="d-flex">
+                    <a class="mbz-nav-item mbz-font-STextOffice-B-14 mbz-text-secondary" href="reporteLista">
+                        <div class="mbz-opc-w-90p">
+                            <span class="">Reportes</span>
+                        </div>
+                    </a>
+                    <a class="mbz-font-STextOffice-B-14 mbz-text-secondary" href="javascript: void(0);" @onclick="e => collapReportes = !collapReportes">
+                        <div class="mbz-opc-w-10p">
+                            @if (collapReportes)
+                            {
+                                <img src="../image/chevron-forward-outline.svg" style="width:20px;height:18px;" />
+                            }
+                            else
+                            {
+                                <img src="../image/chevron-down-outline.svg" style="width:20px;height:18px;" />
+                            }
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav flex-column" style="margin-left: 30px; @(!collapReportes ? string.Empty: "display: none")">
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="reporteSemaforos">
+                            <span class="">Semáforos</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="reporteEnvioDetalles">
+                            <span class="">Detalle de envío</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="reporteSemaforoFacialDetalles">
+                            <span class="">Comparativo facial</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="reporteBitacoras">
+                            <span class="">Bitácora</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="reporteListasNegras">
+                            <span class="">Lista Negra</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </AuthorizeView>
+
+        <AuthorizeView Roles="Administrador">
+            <li class="mbz-nav">
+                <div class="d-flex">
+                    <a class="mbz-nav-item mbz-font-STextOffice-B-14 mbz-text-secondary" href="usuarioAdmin">
+                        <div class="mbz-opc-w-90p">
+                            <span class="">Administración de usuarios</span>
+                        </div>
+                    </a>
+                    <a class="mbz-font-STextOffice-B-14 mbz-text-secondary" href="javascript: void(0);" @onclick="e => collapUsuarios  = !collapUsuarios ">
+                        <div class="mbz-opc-w-10p">
+                            @if (collapUsuarios)
+                            {
+                                <img src="../image/chevron-forward-outline.svg" style="width:20px;height:18px;" />
+                            }
+                            else
+                            {
+                                <img src="../image/chevron-down-outline.svg" style="width:20px;height:18px;" />
+                            }
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav flex-column" style="margin-left: 30px; @(!collapUsuarios  ? string.Empty: "display: none")">
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="usuarioNuevo">
+                            <span class="">Agregar usuarios</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="usuarioLista">
+                            <span class="">Lista de usuarios</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="mbz-nav">
+                <div class="d-flex">
+                    <a class="mbz-nav-item mbz-font-STextOffice-B-14 mbz-text-secondary" href="agenciaAdmin">
+                        <div class="mbz-opc-w-90p">
+                            <span class="">Administración de agencias</span>
+                        </div>
+                    </a>
+                    <a class="mbz-font-STextOffice-B-14 mbz-text-secondary" href="javascript: void(0);" @onclick="e => collapAgencias  = !collapAgencias ">
+                        <div class="mbz-opc-w-10p">
+                            @if (collapAgencias)
+                            {
+                                <img src="../image/chevron-forward-outline.svg" style="width:20px;height:18px;" />
+                            }
+                            else
+                            {
+                                <img src="../image/chevron-down-outline.svg" style="width:20px;height:18px;" />
+                            }
+                        </div>
+                    </a>
+                </div>
+                <ul class="nav flex-column" style="margin-left: 30px; @(!collapAgencias  ? string.Empty: "display: none")">
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="agenciaNueva">
+                            <span class="">Agregar agencia</span>
+                        </a>
+                    </li>
+                    <li class="mbz-nav">
+                        <a class="mbz-nav-item mbz-font-STextOffice-14 mbz-text-secondary" href="agenciaLista">
+                            <span class="">Lista de agencias</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </AuthorizeView>
+        <li class="mbz-nav">
+            <a class="mbz-font-STextOffice-B-14 mbz-text-secondary" href="javascript: void(0);" @onclick="Logout">
+                <div class="mbz-opc-w-90p">
+                    <span class="">Cerrar sesión</span>
+                </div>
+                <div class="mbz-opc-w-10p">
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapSolicitudes = true;
+    private bool collapReportes = true;
+    private bool collapUsuarios = true;
+    private bool collapAgencias = true;
+
+    private void Logout()
+    {
+        AppState.ShowPopup(true);
+    }
+
+}

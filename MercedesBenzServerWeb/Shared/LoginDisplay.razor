@@ -1,0 +1,148 @@
+﻿@implements IDisposable
+@inject Services.IPaqueteService Service
+@inject Services.IUsuarioService ServiceUsuario;
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject LocalStorage LocalStorage
+
+<AuthorizeView Roles="Administrador, Análista">
+    <Authorized>
+        <nav id="menu-login">
+            <ul>
+                <li class="mbz-nav">
+                    <div class="d-flex" style="align-items:center">
+                        <a class="" href="javascript: void(0);">
+                            <div class="mbz-ctr-header-notify">
+                                <div style="@(totalNotificaciones == 0 ? "" : "position: relative; top: 14px;") ">
+                                    <img src="../image/Notificaciones.png" />
+                                </div>
+                                <div style="position: relative; top: -28px; left: 16px; @(totalNotificaciones == 0 ? "display: none" : string.Empty)">
+                                    <span class="mbz-span-sem-rojo" style="width: 14px; height: 14px; font-size: 8px; text-align: center; padding-top: 2px; ">@totalNotificaciones</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="mbz-ctr-header-image">
+                            <img src="../image/UsuarioAdministrativo.png" />
+                        </div>
+                        <div class="mbz-ctr-header-name mbz-text-white">
+                            @if (Credential.NombreCompleto != null)
+                            {
+                                @if (Credential.NombreCompleto.Length > 30)
+                                {
+                                    <span>@Credential.NombreCompleto.Substring(0, 30)</span> }
+                                else
+                                {
+                                    <span>@Credential.NombreCompleto</span>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <MercedesBenzServerWeb.Pages.Notificaciones Solicitudes="@notificaciones"></MercedesBenzServerWeb.Pages.Notificaciones>
+                </li>
+            </ul>
+        </nav>
+
+        @if (AppState.PopupLogout)
+        {
+            <MercedesBenzServerWeb.Pages.Popup.PopupPregunta Texto=@mensajePopup OnClose="@OnPopupClose"></MercedesBenzServerWeb.Pages.Popup.PopupPregunta>
+        }
+
+    </Authorized>
+    <NotAuthorized>
+        <span>@Credential.NombreCompleto - @Credential.Rol </span>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+    private System.Threading.Timer? timer;
+    private string mensaje { get; set; }
+    private List<SolicitudNotificacion> notificaciones = null;
+    private int totalNotificaciones = 0;
+
+    private string mensajePopup = "¿Deseas cerrar sesión?";
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        if (string.IsNullOrEmpty(Credential.NombreUsuario))
+        {
+            var credential = await LocalStorage.GetCredentialAsync("credential");
+            if (credential != null)
+                Credential = credential;
+        }
+
+        AppState.OnChange += StateHasChanged;
+        AppState.OnUpdateNotify += RefrescarNotificaciones;
+
+        timer = new System.Threading.Timer(async (object? stateInfo) =>
+        {
+            await ConsultarDatos();
+            await InvokeAsync(StateHasChanged);
+        }, new System.Threading.AutoResetEvent(false), 1000, 29000);
+
+        var inactividad = Task.Run(async () => { await JS.InvokeVoidAsync("TimerSesion", DotNetObjectReference.Create(this)); });
+
+    }
+
+    private void RefrescarNotificaciones()
+    {
+        Task.Run(async () =>
+        {
+            await ConsultarDatos();
+            await InvokeAsync(StateHasChanged);
+        });
+    }
+
+    private async Task ConsultarDatos()
+    {
+        totalNotificaciones = 0;
+        (string mensajeResponse, RespuestaPaginada respuestaResponse) = await Service.GetSolicitudesNotificacionesAsync();
+        if (respuestaResponse != null)
+        {
+            notificaciones = JsonConvert.DeserializeObject<IEnumerable<SolicitudNotificacion>>(respuestaResponse.Data.ToString()).ToList();
+            if (notificaciones != null)
+                totalNotificaciones = notificaciones.Count;
+        }
+        else
+            notificaciones = null;
+    }
+
+    private async void OnPopupClose(bool respuesta)
+    {
+        AppState.ShowPopup(false);
+        if (respuesta)
+        {
+            try
+            {
+                await Logout();
+            }
+            catch { }
+
+            NavigationManager.NavigateTo("/login");
+        }
+    }
+
+    void IDisposable.Dispose()
+    {
+        AppState.OnChange -= StateHasChanged;
+        AppState.OnUpdateNotify -= RefrescarNotificaciones;
+        timer?.Dispose();
+        timer = null;
+    }
+
+    [JSInvokable]
+    public async Task Logout()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("TimerSesionDesactivar");
+            Busqueda.NumeroPagina = 0;
+            var customAuthentication = (CustomAuthentication)AuthenticationStateProvider;
+            await customAuthentication.DeleteAuthenticationStateAsync();
+            await ServiceUsuario.LogOutAsync(Credential.NombreUsuario);
+        }
+        catch { }
+
+        NavigationManager.NavigateTo("/login");
+    }
+
+}

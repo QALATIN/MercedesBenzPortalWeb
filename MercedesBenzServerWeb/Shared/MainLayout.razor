@@ -1,0 +1,46 @@
+﻿@inherits LayoutComponentBase
+@using MercedesBenzServerWeb.Pages
+@inject LocalStorage LocalStorage
+
+<AuthorizeView>
+    <Authorized>
+        <div class="mbz-ctr-full">
+            <div class="mbz-ctr">
+                <div class="page">
+                    <div class="mbz-sidebar">
+                        <NavMenu />
+                    </div>
+
+                    <div class="main">
+                        <div class="mbz-ctr-header mbz-flx-ah-right">
+                            <LoginDisplay />
+                        </div>
+
+                        <div class="mbz-ctr-content">
+                            <CascadingValue Value="@parametros.RegistrosPagina" Name="RegistrosPagina">
+                                @Body
+                            </CascadingValue>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <SplashScreen></SplashScreen>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private ParametrosL parametros = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (string.IsNullOrEmpty(Credential.NombreUsuario))
+        {
+            var credential = await LocalStorage.GetCredentialAsync("credential");
+            if (credential != null)
+                Credential = credential;
+        }
+    }
+}
