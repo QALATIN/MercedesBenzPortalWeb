@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MercedesBenzDBContext\MercedesBenzDBContext.csproj" />
+    <ProjectReference Include="..\MercedesBenzDBValidaciones\MercedesBenzDBValidaciones.csproj" />
+    <ProjectReference Include="..\MercedesBenzJwtAuthentication\MercedesBenzJwtAuthentication.csproj" />
+    <ProjectReference Include="..\MercedesBenzLibrary\MercedesBenzLibrary.csproj" />
+    <ProjectReference Include="..\MercedesBenzLogger\MercedesBenzLogger.csproj" />
+    <ProjectReference Include="..\MercedesBenzModel\MercedesBenzModel.csproj" />
+    <ProjectReference Include="..\MercedesBenzSecurity\MercedesBenzSecurity.csproj" />
+  </ItemGroup>
+
+</Project>
