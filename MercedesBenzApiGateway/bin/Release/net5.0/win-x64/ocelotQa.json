@@ -1,0 +1,426 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/ApiFirma/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/ApiFirma/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiFirma",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/ApiFirma",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiServicios/api/validacion/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/validacion/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiServicios/api/validacion",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/validacion",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiAfis/api/afis/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/afis/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiAfis/api/afis",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/afis",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiIneValidacion/api/ineValidacion/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/ineValidacion/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiIneValidacion/api/ineValidacion",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/ineValidacion",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiValidaciones/api/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/validaciones/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiValidaciones/api",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/validaciones",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiServicios/api/bitacora/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/bitacora/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiServicios/api/bitacora",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/bitacora",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiServicios/api/general/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/general/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiServicios/api/general",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/general",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiRecuperacion/api/recuperacion/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/recuperacion/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiRecuperacion/api/recuperacion",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/recuperacion",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiCatalogos/api",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/catalogos",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiCatalogos/api/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/catalogos/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiUsuarios/api/usuarios",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/usuarios",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiUsuarios/api/usuarios/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/usuarios/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiPaquetes/api/paquetes",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/paquetes",
+      "UpstreamHttpMethod": [ "GET", "POST" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiPaquetes/api/paquetes/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/paquetes/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiAgencias/api/agencias",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/agencias",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiAgencias/api/agencias/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/agencias/{url}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiBusquedas/api/busquedas",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/busquedas",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiBusquedas/api/busquedas/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/busquedas/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiReportes/api/reportes",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/reportes",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/ApiReportes/api/reportes/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/reportes/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      "DownstreamHeaderTransform": {
+        "X-Forwarded-For": "{RemoteIpAddress}"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+  }
+}
