@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "8lIFrkM4gpUM+Fb1F/9lfU4bbz69HvpJHuZpkw8svm6/kWMEMvn8oG1xCs6zjn/4wVWmbLcVqeHyOcZD2b2vtQ==",
+  "success": true,
+  "projectFilePath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzPortalWebResp.csproj\\MercedesBenzPortalWebResp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\CAGUILAR\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.7\\microsoft.netcore.app.host.win-x64.5.0.7.nupkg.sha512"
+  ],
+  "logs": []
+}
