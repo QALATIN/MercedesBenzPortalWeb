@@ -1,0 +1,228 @@
+/*
+    CSS Mercedes Benz
+*/
+
+.mbz-ctr-full {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    color: #707070;
+}
+.mbz-ctr {
+    width: 1106px;
+    border: 1px solid rgba(0,0,0,.125);
+    /* width: 1366px;
+    height: 768px; */
+}
+.mbz-ctr-content {
+    width: 1026px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* .mbz-ctr div {
+     text-align: center; 
+} */
+.mbz-ctr label {
+    margin: 0px;
+}
+.mbz-bg-login {
+    background: #EDEDED 0% 0% no-repeat padding-box;
+}
+.mbz-ctr-login-head {
+    width: 1366px;
+    height: 56px;
+    background: #000000 0% 0% no-repeat padding-box;
+}
+
+.mbz-ctr-login {
+    width: 533px;
+    height: 482px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 6px 6px 12px #00000029;
+    border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 76px; 
+}
+.mbz-ctr-login-title {
+    padding-top: 42px;
+    padding-bottom: 21px;
+}
+.mbz-ctr-login-body {
+    width: 328px;
+    padding-top: 21px;
+    padding-bottom: 42px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.mbz-btn {
+    display: inline-block;
+    width: 100%;
+    height: 56px;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    color: #FFFFFF;
+    font-size: 18px;
+
+}
+.mbz-btn input:focus {
+    outline: 0;
+    box-shadow: 1px 1px #00000029;
+}
+.mbz-btn-primary {
+    background: #00ADEF 0% 0% no-repeat padding-box;
+    border-radius: 4px;
+}
+.mbz-card {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.mbz-row {
+    display: flex; 
+}
+.mbz-h-sem {
+    height: 62px;
+}
+.mbz-p-1 {
+    padding: 10px; 
+}
+.mbz-w-10p {
+    width: 10%;
+    float: left;
+}
+.mbz-w-25p {
+    width: 25%;
+    float: left;
+}
+.mbz-w-50p {
+    width: 50%;
+    float: left;
+}
+.mbz-w-90p {
+    width: 90%;
+    float: left;
+}
+.mbz-w-100p {
+    width: 90%;
+}
+.mbz-hr-cta {
+    border-top: 1px solid #707070;
+}
+.mbz-br-1 {
+    font-size: 8px;
+}
+.mbz-cta-det-hr-12 {
+    padding-left: 20px;
+    width: 660px;
+    height: 0px;
+}
+
+.mbz-btn-sem {
+    width: 128px;
+    height: 28;
+    font-size: 14px;
+    color: #FFFFFF;
+}
+.mbz-aln-end {
+    justify-content: flex-end;
+}
+
+.mbz-cta-det-1 {
+    width: 180px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.mbz-cta-det-2 {
+    width: 480px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.mbz-cta-det-3 {
+    width: 346px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 0px;
+}
+.mbz-cta-sem-1 {
+    align-self: center;
+    width: 196px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+.mbz-cta-sem-2 {
+    align-self: center;
+    width: 662px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.mbz-cta-sem-3 {
+    width: 148px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 0px;
+    text-align: center;
+}
+.mbz-cta-ava-1 {
+    align-self: center;
+    width: 80px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}
+.mbz-cta-ava-2 {
+    align-self: center;
+    width: 778px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.mbz-cta-ava-3 {
+    align-self: center;
+    width: 148px;
+    float: left;
+    padding-left: 10px;
+    padding-right: 0px;
+    text-align: center;
+}
+.mbz-rep {
+    align-self: center;
+    width: 334px;
+    float: left;
+    margin: 10px;
+}
+
+.mbz-tb {
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.mbz-tb tr > th {
+    background-color: #28a745 !important;
+    color: #fff !important;
+    text-align: center;
+}
+
+.mbz-tb-cta-sem {
+    border-collapse: collapse;
+    font-size: 16px;
+}
+
+.mbz-tb-cta-sem tr > th {
+    background: #CACACC 0% 0% no-repeat padding-box;
+    color: #232F3B;
+    text-align: center;
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card">
+
+        <div class="row align-items-center tarjeta_tamaño">
+            <div class="col-md-2">
+                @if (Model.Resultado == "Passed")
+                {
+                    <i class="fa fa-circle fa-4x text-success d-flex justify-content-center align-middle"></i>
+                }
+                else if (Model.Resultado == "Attention")
+                {
+                    <i class="fa fa-circle fa-4x text-warning d-flex justify-content-center align-middle"></i>
+                }
+                else if (Model.Resultado == "Failed")
+                {
+                    <i class="fa fa-circle fa-4x text-danger d-flex justify-content-center align-middle"></i>
+                }
+    
+            </div>
+            <div class="col-md-8">
+                <h3 class="text-success">Semáforo de identificación</h3>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-success btn-block" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Ver
+                </a>
+            </div>
+        </div>
+    
+        <div class="collapse" id="collapseExample">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <div class="container-fluid">
+                        <h2>Datos de la identificación</h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src="data:image/png;base64,@Model.FotoRecorteDeLaIdentificacionEnBase64" class="img-thumbnail" width="300" height="400" />
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.Resultado):</b></div>
+                                    <div class="col-md-8">@Model.Resultado</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.NombreCompleto):</b></div>
+                                    <div class="col-md-8">@Model.NombreCompleto</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.Sexo):</b></div>
+                                    <div class="col-md-8">@Model.Sexo</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.Edad):</b></div>
+                                    <div class="col-md-8">@Model.Edad</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.FechaDeNacimiento):</b></div>
+                                    <div class="col-md-8">@Model.FechaDeNacimiento</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.Curp):</b></div>
+                                    <div class="col-md-8">@Model.Curp</div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.FechaDeVencimiento):</b></div>
+                                    <div class="col-md-8">@Model.FechaDeVencimiento</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.FechaDeEmision):</b></div>
+                                    <div class="col-md-8">@Model.FechaDeEmision</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.NumeroDeDocumento):</b></div>
+                                    <div class="col-md-8">@Model.NumeroDeDocumento</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.TipoDeLaIdentificacion):</b></div>
+                                    <div class="col-md-8">@Model.TipoDeLaIdentificacion</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4"><b>@Html.DisplayNameFor(model => model.SerieDeLaIdentificacion):</b></div>
+                                    <div class="col-md-8">@Model.SerieDeLaIdentificacion</div>
+                                </div>
+                                <hr />
+                                <div class="row">
+                                    <img src="data:image/png;base64,@Model.RecorteDeLaFirmaBase64" class="img-fluid" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <h2>Capturas de la identificación</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="data:image/png;base64,@Model.CapturaDeLaIdentificacionFrenteEnBase64" class="img-fluid" />
+                            </div>
+                            <div class="col-md-6">
+                                @if (!string.IsNullOrEmpty(Model.CapturaDeLaIdentificacionReversoEnBase64))
+                                {
+                                    <img src="data:image/png;base64,@Model.CapturaDeLaIdentificacionReversoEnBase64" class="img-fluid" />
+                                }
+                    
+                            </div>
+                        </div>
+                        <hr />
+                        @* <h2>Reporte de la identificación</h2>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <embed src="data:application/pdf;base64,@Model.PdfEnBase64" type="application/pdf" width="100%" height="600px" />
+                                </div>
+                            </div>*@
+                    </div>
+                </div>
+    
+                @await Html.PartialAsync("_AlertasDeIdentificacion", Model.DatosDeLaIdentificacion.Alerts)
+    
+            </div>
+        </div>
+    </div>
+</body>
+</html>

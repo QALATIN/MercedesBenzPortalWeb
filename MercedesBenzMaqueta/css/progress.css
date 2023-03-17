@@ -1,0 +1,30 @@
+.progress-box {
+    /* border:1px solid #aaa;  */
+    background-color: #fff; 
+    display: flex;
+}
+.progress-circle {
+    fill: none;
+    /* stroke-width: 8; */
+    /* stroke-width: 16; */
+    /* stroke: #168A00; */
+    stroke-dasharray: 630;
+    stroke-dashoffset: 630;
+    transform: rotate(-90deg);
+    transform-origin: center;
+    /* stroke-linecap: round; */
+}
+.progress-circle-back {
+    fill: none;
+    /* stroke-width: 8; */
+    /* stroke-width: 16; */
+    /* stroke: #EAEAEA; */
+}
+.progress-percentage {
+    position: relative;
+    font-size: 12px;
+    align-self: center;
+}
+.percentage-circle{
+    text-align: center;
+}
