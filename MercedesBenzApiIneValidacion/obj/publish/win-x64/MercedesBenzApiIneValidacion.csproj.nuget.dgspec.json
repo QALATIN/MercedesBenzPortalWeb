@@ -1,0 +1,395 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzApiIneValidacion\\MercedesBenzApiIneValidacion.csproj": {}
+  },
+  "projects": {
+    "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzApiIneValidacion\\MercedesBenzApiIneValidacion.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzApiIneValidacion\\MercedesBenzApiIneValidacion.csproj",
+        "projectName": "MercedesBenzApiIneValidacion",
+        "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzApiIneValidacion\\MercedesBenzApiIneValidacion.csproj",
+        "packagesPath": "C:\\Users\\CAGUILAR\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzApiIneValidacion\\obj\\publish\\win-x64\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CAGUILAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzDBContext\\MercedesBenzDBContext.csproj": {
+                "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzDBContext\\MercedesBenzDBContext.csproj"
+              },
+              "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLibrary\\MercedesBenzLibrary.csproj": {
+                "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLibrary\\MercedesBenzLibrary.csproj"
+              },
+              "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLogger\\MercedesBenzLogger.csproj": {
+                "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLogger\\MercedesBenzLogger.csproj"
+              },
+              "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj": {
+                "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.7, 5.0.7]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzDBContext\\MercedesBenzDBContext.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzDBContext\\MercedesBenzDBContext.csproj",
+        "projectName": "MercedesBenzDBContext",
+        "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzDBContext\\MercedesBenzDBContext.csproj",
+        "packagesPath": "C:\\Users\\CAGUILAR\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzDBContext\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CAGUILAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj": {
+                "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLibrary\\MercedesBenzLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLibrary\\MercedesBenzLibrary.csproj",
+        "projectName": "MercedesBenzLibrary",
+        "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLibrary\\MercedesBenzLibrary.csproj",
+        "packagesPath": "C:\\Users\\CAGUILAR\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLibrary\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CAGUILAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj": {
+                "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLogger\\MercedesBenzLogger.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLogger\\MercedesBenzLogger.csproj",
+        "projectName": "MercedesBenzLogger",
+        "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLogger\\MercedesBenzLogger.csproj",
+        "packagesPath": "C:\\Users\\CAGUILAR\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzLogger\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CAGUILAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Serilog.AspNetCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Serilog.Sinks.PostgreSQL": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    },
+    "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj",
+        "projectName": "MercedesBenzModel",
+        "projectPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\MercedesBenzModel.csproj",
+        "packagesPath": "C:\\Users\\CAGUILAR\\.nuget\\packages\\",
+        "outputPath": "D:\\Proyectos\\Net\\MercedesBenzWeb\\MercedesBenzModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\CAGUILAR\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-preview.6.21355.2\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "win-x64": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
